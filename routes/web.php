@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/register/verify/{token}', 'RegisterController@verify')->name('register.verify');
+Auth::routes();
+Route::post('/register/check/{type}', 'Auth\RegisterController@check')->name('auth.check');
+Route::get('/register/verify/{token}', 'Auth\RegisterController@verify')->name('auth.verify');

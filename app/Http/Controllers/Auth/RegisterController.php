@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -50,6 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'link' => 'required|string|min:2|max:16|regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/|unique:users',
+            'birth_year' => 'required|integer|min:0|max:' . date('Y'),
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -77,7 +81,7 @@ class RegisterController extends Controller
         ]);
 
         // Handle Email Verification
-        $key = $this->app['config']['app.key'];
+        $key = config('app.key');
 
         if (Str::startsWith($key, 'base64:')) {
             $key = base64_decode(substr($key, 7));

@@ -16292,12 +16292,14 @@ nav.navbar .navbar-burger:hover span {
   color: #d9d9d9;
 }
 
-a {
+a,
+button {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
-a:hover {
+a:hover,
+button:hover {
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
