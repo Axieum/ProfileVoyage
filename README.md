@@ -10,8 +10,11 @@ Having the ability to correlate all your social media platforms into place provi
 ### How does it work?
 
 **1.** Create an account with ProfileVoyage.
+
 **2.** Instantly setup a new profile page.
+
 **3.** Link the social platforms you desire for this specific page.
+
 **4.** Share your link!
 
 
