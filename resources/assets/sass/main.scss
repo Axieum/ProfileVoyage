@@ -7,6 +7,77 @@ html, body {
     }
 }
 
+nav.navbar {
+    padding: 15px;
+
+    & .navbar-menu .navbar-start a {
+        color: lighten($primary, 18%);
+        &:hover  {
+            color: white;
+        }
+        &.is-active {
+            color: whitesmoke;
+            &:hover {
+                color: whitesmoke;
+            }
+        }
+    }
+    &.level:not(:last-child) {
+        margin-bottom: 0;
+    }
+    &.has-shadow {
+        box-shadow: 0 1px 5px $grey;
+    }
+    &.is-transparent {
+        background: transparent!important;
+        background-color: transparent!important;
+    }
+    &.is-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-bottom: 0;
+    }
+    & .navbar-burger {
+        position: absolute;
+        right: 0;
+        color: white;
+        transition: all 0.3s ease-in-out;
+
+        & span {
+            height: 2px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        & span:nth-child(1) {
+            width: 15px;
+        }
+        & span:nth-child(2) {
+            width: 10px;
+        }
+        & span:nth-child(3) {
+            width: 12px;
+        }
+        &:hover {
+            transition: all 0.2s ease-in-out;
+
+            & span {
+                width: 15px;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+}
+
+.hero-nav {
+    margin-bottom: 15px;
+
+    & .hero-body {
+        padding-top: 1rem;
+    }
+}
+
 .title {
     font-family: "Raleway", Helvetica;
 

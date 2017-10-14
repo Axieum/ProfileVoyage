@@ -13,6 +13,14 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body {{ Route::is('index') ? 'special' : '' }}>
+        <nav>
+            @include('partials._navigation')
+            
+            @if (!Route::is('index'))
+                @include('partials._header')
+            @endif
+        </nav>
+
         <main>
             @yield('content')
         </main>
