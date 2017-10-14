@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -48,7 +49,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'link' => 'required|string|min:2|max:16|regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -62,10 +63,85 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        // User
+        $user = User::create([
+            'link' => $data['link'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        // Profile
+        $user->profile()->create([
+            'name' => substr($user->email, 0, strpos($user->email, '@')),
+            'birth_year' => (int) $data['birth_year']
+        ]);
+
+        // Handle Email Verification
+        $key = $this->app['config']['app.key'];
+
+        if (Str::startsWith($key, 'base64:')) {
+            $key = base64_decode(substr($key, 7));
+        }
+
+        DB::table('email_verifications')->insert([
+            'user_id' => $user->id,
+            'token' => hash_hmac('sha256', Str::random(40), $key),
+            'created_at' => now()
+        ]);
+
+        // User registered
+        return $user;
+    }
+
+    /**
+     * Check the availability of a request.
+     *
+     * @param  string  $type
+     * @return json
+     */
+    public function verify($token)
+    {
+        if (!$token)
+            abort(403, 'Invalid token.')
+
+        $email_verification = DB::table('email_verifications')->where('token', $token)->first();
+        $user = User::where('id', $email_verification->user_id)->first();
+
+        if (is_null($user))
+            abort(404, 'Token not found!')
+
+        $user->verified = 1;
+        $user->save();
+
+        $email_verification->delete();
+    }
+
+    /**
+     * Check the availability of a request.
+     *
+     * @param  string  $type
+     * @return json
+     */
+    public function check($type)
+    {
+        $available = false;
+
+        if ($type === 'email')
+        {
+            if (!User::where('email', Input::get('value'))->count())
+            {
+                $available = true;
+            }
+        }
+
+        if ($type === 'link')
+        {
+            if (!User::where('link', Input::get('value'))->count())
+            {
+                $available = true;
+            }
+        }
+
+        return response()->json(array('valid' => $available));
     }
 }

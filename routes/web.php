@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register/verify/{token}', 'RegisterController@verify')->name('register.verify');
