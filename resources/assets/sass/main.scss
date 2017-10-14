@@ -1,0 +1,73 @@
+html, body {
+    background-color: whitesmoke;
+
+    &[special] {
+        background: $special-background;
+        background-image: $special-background;
+    }
+}
+
+.title {
+    font-family: "Raleway", Helvetica;
+
+    &.is-large {
+        font-size: 84px;
+    }
+    & .subtitle.muted-text {
+        color: darken(white, 15%);
+    }
+}
+
+a {
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        transition: all 0.1s ease-in-out;
+    }
+}
+
+.white-text {
+    color: #fff;
+}
+
+a.white-text:hover {
+    color: darken(white, 10%);
+}
+
+.muted-text {
+    color: darken(white, 25%);
+}
+
+a.muted-text:hover {
+    color: darken(white, 35%);
+}
+
+.washed-text {
+    color: whitesmoke;
+}
+
+a.washed-text:hover {
+    color: white;
+}
+
+a.button.is-secondary {
+    background-color: $secondary;
+    &:hover {
+        background-color: lighten($secondary, 5%);
+    }
+}
+
+#steps {
+    margin-bottom: 25px;
+
+    .title, .subtitle {
+        color: $primary;
+        transition: color 0.2s ease-in-out;
+    }
+    a:hover {
+        color: white;
+        & .title, .subtitle {
+            color: white;
+            transition: color 0.1s ease-in-out;
+        }
+    }
+}

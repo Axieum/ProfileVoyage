@@ -16181,6 +16181,93 @@ label.panel-block:hover {
   background: rgba(255, 56, 96, 0.05);
 }
 
+html,
+body {
+  background-color: whitesmoke;
+}
+
+html[special],
+body[special] {
+  background: linear-gradient(45deg, #483E99 1%, #957FEF 60%, #B79CED 99%);
+  background-image: linear-gradient(45deg, #483E99 1%, #957FEF 60%, #B79CED 99%);
+}
+
+.title {
+  font-family: "Raleway", Helvetica;
+}
+
+.title.is-large {
+  font-size: 84px;
+}
+
+.title .subtitle.muted-text {
+  color: #d9d9d9;
+}
+
+a {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.white-text {
+  color: #fff;
+}
+
+a.white-text:hover {
+  color: #e6e5e5;
+}
+
+.muted-text {
+  color: #bfbfbf;
+}
+
+a.muted-text:hover {
+  color: #a6a6a6;
+}
+
+.washed-text {
+  color: whitesmoke;
+}
+
+a.washed-text:hover {
+  color: white;
+}
+
+a.button.is-secondary {
+  background-color: #7161EF;
+}
+
+a.button.is-secondary:hover {
+  background-color: #8678f1;
+}
+
+#steps {
+  margin-bottom: 25px;
+}
+
+#steps .title,
+#steps .subtitle {
+  color: #B79CED;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+#steps a:hover {
+  color: white;
+}
+
+#steps a:hover .title,
+#steps a:hover .subtitle {
+  color: white;
+  -webkit-transition: color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out;
+}
+
 .m-t-0 {
   margin-top: 0px !important;
 }
