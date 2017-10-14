@@ -102,13 +102,13 @@ class RegisterController extends Controller
     public function verify($token)
     {
         if (!$token)
-            abort(403, 'Invalid token.')
+            abort(403, 'Invalid token.');
 
         $email_verification = DB::table('email_verifications')->where('token', $token)->first();
         $user = User::where('id', $email_verification->user_id)->first();
 
         if (is_null($user))
-            abort(404, 'Token not found!')
+            abort(404, 'Token not found!');
 
         $user->verified = 1;
         $user->save();
