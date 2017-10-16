@@ -13,13 +13,13 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body special>
-        <nav class="container navbar is-transparent" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a href="{{ route('index') }}" class="logo"><img src="{{ asset('img/logo.svg') }}" alt="Profile Voyage" height="58px" width="167px"></a>
+        <nav class="navbar is-transparent is-fixed is-nonfixed-touch" role="navigation" aria-label="main navigation">
+            <div class="container navbar-brand has-text-centered">
+                <a href="{{ route('index') }}" class="logo"><img src="{{ asset('img/logo_light.svg') }}" alt="Profile Voyage" width="48px"></a>
             </div>
         </nav>
 
-        <main class="hero is-fullheight" style="margin-top: -82px;">
+        <main class="hero is-fullheight">
             <div class="hero-body">
                 <div class="container">
                     @yield('content')
