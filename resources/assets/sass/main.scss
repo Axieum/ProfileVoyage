@@ -1,10 +1,5 @@
 html, body {
     background-color: whitesmoke;
-
-    &[special] {
-        background: $special-background;
-        background-image: $special-background;
-    }
 }
 
 nav.navbar {
@@ -27,10 +22,6 @@ nav.navbar {
     }
     &.has-shadow {
         box-shadow: 0 1px 5px $grey;
-    }
-    &.is-transparent {
-        background: transparent!important;
-        background-color: transparent!important;
     }
     &.is-fixed {
         position: fixed;
@@ -119,12 +110,19 @@ nav.navbar-mobile {
         width: 100vw;
     }
 }
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+    background-color: transparent;
+}
 
 .hero-nav {
     margin-bottom: 15px;
 
     & .hero-body {
         padding-top: 1rem;
+
+        & .title {
+            color: white;
+        }
     }
 }
 

@@ -16186,12 +16186,6 @@ body {
   background-color: whitesmoke;
 }
 
-html[special],
-body[special] {
-  background: linear-gradient(45deg, #483E99 1%, #957FEF 60%, #B79CED 99%);
-  background-image: linear-gradient(45deg, #483E99 1%, #957FEF 60%, #B79CED 99%);
-}
-
 nav.navbar {
   padding: 15px;
 }
@@ -16219,11 +16213,6 @@ nav.navbar.level:not(:last-child) {
 nav.navbar.has-shadow {
   -webkit-box-shadow: 0 1px 5px #7a7a7a;
           box-shadow: 0 1px 5px #7a7a7a;
-}
-
-nav.navbar.is-transparent {
-  background: transparent !important;
-  background-color: transparent !important;
 }
 
 nav.navbar.is-fixed {
@@ -16338,12 +16327,23 @@ nav.navbar-mobile .navbar-burger-close:hover {
   width: 100vw;
 }
 
+a.navbar-item:hover,
+a.navbar-item.is-active,
+.navbar-link:hover,
+.navbar-link.is-active {
+  background-color: transparent;
+}
+
 .hero-nav {
   margin-bottom: 15px;
 }
 
 .hero-nav .hero-body {
   padding-top: 1rem;
+}
+
+.hero-nav .hero-body .title {
+  color: white;
 }
 
 .title {
@@ -17522,6 +17522,11 @@ a.button.is-secondary:hover {
 
 [v-cloak] {
   display: none;
+}
+
+[special] {
+  background: linear-gradient(45deg, #483E99 1%, #957FEF 60%, #B79CED 99%);
+  background-image: linear-gradient(45deg, #483E99 1%, #957FEF 60%, #B79CED 99%);
 }
 
 .is-circle {

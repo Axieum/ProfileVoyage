@@ -1,4 +1,4 @@
-<nav class="navbar is-transparent {{ Route::is('index') ? 'is-fixed is-nonfixed-touch' : '' }}" role="navigation" aria-label="main navigation">
+<nav class="navbar has-transparentbackground {{ Route::is('index') ? 'is-fixed is-nonfixed-touch' : '' }}" role="navigation" aria-label="main navigation">
     <div class="container level is-mobile">
         <div class="level-left">
             <div class="level-item navbar-brand is-marginless">

@@ -1,4 +1,4 @@
-<section class="hero hero-nav is-dark is-transparent">
+<section class="hero hero-nav is-dark has-transparentbackground">
     <div class="hero-body has-text-centered">
         <div class="container">
             <h1 class="title is-size-2-desktop is-size-3-touch">@yield('title')</h1>
