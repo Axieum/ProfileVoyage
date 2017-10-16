@@ -45,11 +45,13 @@
                         <div class="navbar-item has-dropdown is-hoverable">
                             <div class="level is-marginless p-l-5 p-r-5">
                                 <div class="level-left">
-                                    <a href="#!" class="level-item figure is-24x24">
-                                        <img src="{{ asset('img/profile.png') }}" class="is-circle has-border">
+                                    <a href="#!" class="level-item">
+                                        <figure class="image is-24x24">
+                                            <img src="{{ asset('img/profile.png') }}" class="is-circle has-border">
+                                        </figure>
                                     </a>
                                     <a href="#!" class="level-item washed-text has-text-weight-semibold is-marginless">{{ Auth::user()->profile->name }}</a>
-                                    <span class="level-item icon washed-text m-l-5"><i class="fa fa-chevron-down"></i></span>
+                                    <span class="level-item icon is-small washed-text m-l-5"><i class="fa fa-chevron-down"></i></span>
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed">
@@ -67,3 +69,41 @@
         </div>
     </div>
 </nav>
+<nav class="navbar-mobile">
+    <div class="level is-mobile">
+        <div class="level-left"><h2 class="title is-4">Profile Voyage</h2></div>
+        <div class="level-right"><a class="navbar-burger-close"><span class="icon"><i class="fa fa-close"></i></span></a></div>
+    </div>
+    <div class="navbar-divider m-b-15"></div>
+    <div class="navbar-mobile-menu">
+        @guest
+            <a href="{{ route('login') }}" class="navbar-item button is-outlined m-b-15">
+                <span class="icon"><i class="fa fa-sign-in"></i></span>
+                <span>Login</span>
+            </a>
+            <a href="{{ route('register') }}" class="navbar-item button is-primary is-secondary">
+                <span class="icon"><i class="fa fa-users"></i></span>
+                <span>Register</span>
+            </a>
+        @else
+            <div class="level is-mobile is-fullwidth m-b-15">
+                <div class="level-left is-centered">
+                    <a href="#!" class="level-item m-r-5">
+                        <figure class="image is-24x24">
+                            <img src="{{ asset('img/profile.png') }}" class="is-circle has-border-dark is-thin">
+                        </figure>
+                    </a>
+                    <a href="#!" class="level-item dark-text has-text-weight-normal">{{ Auth::user()->profile->name }}</a>
+                </div>
+            </div>
+            <div class="navbar-divider"></div>
+            <a class="navbar-item">Profiles</a>
+            <a class="navbar-item">Notifications</a>
+            <a class="navbar-item">Account</a>
+            <hr class="navbar-divider">
+            <a href="{{ route('logout') }}" class="navbar-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+        @endguest
+    </div>
+</nav>
+<div class="navbar-mobile-underlay"></div>

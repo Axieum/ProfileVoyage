@@ -59,7 +59,10 @@ nav.navbar {
         & span:nth-child(3) {
             width: 12px;
         }
-        &:hover {
+        &.is-active {
+            color: $grey-dark;
+        }
+        &:hover, &.is-active {
             transition: all 0.2s ease-in-out;
 
             & span {
@@ -67,6 +70,53 @@ nav.navbar {
                 transition: all 0.2s ease-in-out;
             }
         }
+    }
+}
+nav.navbar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20rem;
+    max-width: 75%;
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
+    transform: translateX(-20rem);
+    transition: all 0.2s ease-in-out;
+
+    &.is-active {
+        transform: translateX(0);
+    }
+    & .navbar-divider {
+        display: block;
+    }
+    & a.button {
+        height: auto;
+    }
+    & .navbar-burger-close {
+        color: $grey-dark;
+        transition: color 0.2s ease-in-out;
+        &:hover {
+            color: lighten($secondary, 10%);
+        }
+    }
+}
+.navbar-mobile-underlay {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    &.is-active {
+        opacity: 1;
+        width: 100vw;
     }
 }
 
@@ -102,6 +152,14 @@ a, button {
 
 a.white-text:hover {
     color: darken(white, 10%);
+}
+
+.dark-text {
+    color: $grey-dark;
+}
+
+a.dark-text:hover {
+    color: lighten($grey-dark, 10%);
 }
 
 .muted-text {

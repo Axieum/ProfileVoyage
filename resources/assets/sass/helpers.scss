@@ -33,6 +33,14 @@ $sides: (top, bottom, left, right);
     border: 2px solid white;
 }
 
+.has-border-dark {
+    border: 2px solid $grey-dark;
+}
+
+.is-thin {
+    border-width: 1px;
+}
+
 .is-rounded {
     border-radius: 5px;
 }
@@ -49,6 +57,11 @@ $sides: (top, bottom, left, right);
 
 .is-fullwidth {
     width: 100%;
+}
+
+.is-centered {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .has-transparentbackground {

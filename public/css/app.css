@@ -16261,15 +16261,81 @@ nav.navbar .navbar-burger span:nth-child(3) {
   width: 12px;
 }
 
-nav.navbar .navbar-burger:hover {
+nav.navbar .navbar-burger.is-active {
+  color: #4a4a4a;
+}
+
+nav.navbar .navbar-burger:hover,
+nav.navbar .navbar-burger.is-active {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
-nav.navbar .navbar-burger:hover span {
+nav.navbar .navbar-burger:hover span,
+nav.navbar .navbar-burger.is-active span {
   width: 15px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+
+nav.navbar-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20rem;
+  max-width: 75%;
+  padding: 2rem;
+  overflow-y: auto;
+  z-index: 1000;
+  background-color: white;
+  -webkit-box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateX(-20rem);
+          transform: translateX(-20rem);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+nav.navbar-mobile.is-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+nav.navbar-mobile .navbar-divider {
+  display: block;
+}
+
+nav.navbar-mobile a.button {
+  height: auto;
+}
+
+nav.navbar-mobile .navbar-burger-close {
+  color: #4a4a4a;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+nav.navbar-mobile .navbar-burger-close:hover {
+  color: #9b8ff4;
+}
+
+.navbar-mobile-underlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.navbar-mobile-underlay.is-active {
+  opacity: 1;
+  width: 100vw;
 }
 
 .hero-nav {
@@ -16310,6 +16376,14 @@ button:hover {
 
 a.white-text:hover {
   color: #e6e5e5;
+}
+
+.dark-text {
+  color: #4a4a4a;
+}
+
+a.dark-text:hover {
+  color: #636363;
 }
 
 .muted-text {
@@ -17458,6 +17532,14 @@ a.button.is-secondary:hover {
   border: 2px solid white;
 }
 
+.has-border-dark {
+  border: 2px solid #4a4a4a;
+}
+
+.is-thin {
+  border-width: 1px;
+}
+
 .is-rounded {
   border-radius: 5px;
 }
@@ -17474,6 +17556,11 @@ a.button.is-secondary:hover {
 
 .is-fullwidth {
   width: 100%;
+}
+
+.is-centered {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .has-transparentbackground {

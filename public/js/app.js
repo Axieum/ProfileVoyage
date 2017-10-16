@@ -46903,6 +46903,23 @@ exports.clearImmediate = clearImmediate;
 
 $(document).ready(function () {
 
+    /**
+        * Sidebar
+        */
+
+    $('a.navbar-burger').click(function () {
+        $('.navbar-mobile').toggleClass('is-active');
+        $('.navbar-mobile-underlay').toggleClass('is-active');
+    });
+    $('a.navbar-burger-close').click(function () {
+        $('.navbar-mobile').toggleClass('is-active');
+        $('.navbar-mobile-underlay').toggleClass('is-active');
+    });
+    $('.navbar-mobile-underlay').click(function () {
+        $('.navbar-mobile').toggleClass('is-active');
+        $('.navbar-mobile-underlay').toggleClass('is-active');
+    });
+
     $('button.delete').click(function () {
         $(this).parent().remove();
     });
