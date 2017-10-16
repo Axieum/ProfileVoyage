@@ -41,6 +41,12 @@ $sides: (top, bottom, left, right);
     position: fixed;
 }
 
+@media screen and (max-width: 1023px) {
+    .is-nonfixed-touch {
+        position: relative!important;
+    }
+}
+
 .is-fullwidth {
     width: 100%;
 }

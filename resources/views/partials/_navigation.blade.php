@@ -1,8 +1,8 @@
-<nav class="navbar is-transparent {{ Route::is('index') ? 'is-fixed' : '' }}" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent {{ Route::is('index') ? 'is-fixed is-nonfixed-touch' : '' }}" role="navigation" aria-label="main navigation">
     <div class="container level is-mobile">
         <div class="level-left">
             <div class="level-item navbar-brand is-marginless">
-                <a href="{{ route('index') }}" class="logo"><img src="{{ asset('img/logo.svg') }}" alt="Profile Voyage" height="58px" width="167px"></a>
+                <a href="{{ route('index') }}" class="logo"><img src="{{ asset('img/logo_light.svg') }}" alt="Profile Voyage" width="48px"></a>
             </div>
             <a class="navbar-burger">
                 <span></span>

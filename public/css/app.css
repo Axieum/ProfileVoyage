@@ -16236,7 +16236,7 @@ nav.navbar.is-fixed {
 
 nav.navbar .navbar-burger {
   position: absolute;
-  right: 0;
+  left: 0;
   color: white;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -17464,6 +17464,12 @@ a.button.is-secondary:hover {
 
 .is-fixed {
   position: fixed;
+}
+
+@media screen and (max-width: 1023px) {
+  .is-nonfixed-touch {
+    position: relative !important;
+  }
 }
 
 .is-fullwidth {

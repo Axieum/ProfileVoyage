@@ -963,7 +963,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(39);
+module.exports = __webpack_require__(40);
 
 
 /***/ }),
@@ -1000,7 +1000,7 @@ var dict = {
 };
 __WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */].Validator.updateDictionary(dict);
 
-__webpack_require__(49);
+__webpack_require__(39);
 
 /***/ }),
 /* 11 */
@@ -46901,21 +46901,6 @@ exports.clearImmediate = clearImmediate;
 /* 39 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */
-/***/ (function(module, exports) {
-
 $(document).ready(function () {
 
     $('button.delete').click(function () {
@@ -46955,6 +46940,12 @@ $(document).ready(function () {
         }
     });
 });
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
