@@ -13,7 +13,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body special>
-        <nav class="navbar is-transparent is-fixed is-nonfixed-touch" role="navigation" aria-label="main navigation">
+        <nav class="navbar has-transparentbackground is-fixed is-nonfixed-touch" role="navigation" aria-label="main navigation">
             <div class="container navbar-brand has-text-centered">
                 <a href="{{ route('index') }}" class="logo"><img src="{{ asset('img/logo_light.svg') }}" alt="Profile Voyage" width="48px"></a>
             </div>
