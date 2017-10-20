@@ -19,7 +19,7 @@
             </div>
         </nav>
 
-        <main class="hero is-fullheight">
+        <main class="hero is-fullheight is-fullheight-desktop">
             <div class="hero-body">
                 <div class="container">
                     @yield('content')

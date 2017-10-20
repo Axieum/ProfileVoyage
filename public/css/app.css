@@ -16184,6 +16184,7 @@ label.panel-block:hover {
 html,
 body {
   background-color: whitesmoke;
+  min-height: 100vh;
 }
 
 nav.navbar {
@@ -17553,7 +17554,17 @@ a.button.is-secondary:hover {
   position: fixed;
 }
 
+@media screen and (min-width: 1024px) {
+  .is-fullheight.is-fullheight-desktop {
+    min-height: 100vh;
+  }
+}
+
 @media screen and (max-width: 1023px) {
+  .is-fullheight.is-fullheight-desktop {
+    min-height: auto;
+  }
+
   .is-nonfixed-touch {
     position: relative !important;
   }

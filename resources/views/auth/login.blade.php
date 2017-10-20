@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="columns is-marginless">
-        <div class="column is-4 is-offset-4">
+        <div class="column is-4-desktop is-offset-4-desktop is-6-tablet is-offset-3-tablet">
             <h2 class="title is-2 is-size-3-touch white-text">Login</h2>
             <div class="card is-rounded m-b-10 form">
                 <div class="card-content">
