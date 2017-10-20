@@ -53,9 +53,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'link' => 'required|string|min:2|max:16|regex:/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/|unique:users',
-            'birth_year' => 'required|integer|min:0|max:' . date('Y'),
+            'date_of_birth' => 'required|date|before:' . date( 'Y/m/d', strtotime('-13 year', strtotime(date('Y-m-j')))),
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed'
         ]);
     }
 
@@ -77,7 +77,7 @@ class RegisterController extends Controller
         // Profile
         $user->profile()->create([
             'name' => substr($user->email, 0, strpos($user->email, '@')),
-            'birth_year' => (int) $data['birth_year']
+            'date_of_birth' => date('Y-m-d', strtotime($data['date_of_birth']))
         ]);
 
         // Handle Email Verification

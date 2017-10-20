@@ -43,13 +43,13 @@
                                 </div>
                                 <div class="field column is-4 is-marginless p-r-0 p-t-0">
                                     <p class="control has-icons-left has-icons-right">
-                                        <input name="birth_year" :class="{'is-danger': (errors.has('birth_year')), 'is-success': fields.birth_year &amp;&amp; fields.birth_year.valid}" v-validate="{rules:{required:true, integer: true, min_value: 0, max_value: {{ date("Y") }}}}" class="input" type="text" placeholder="Year of Birth" value="{{ old('birth_year') }}" required>
+                                        <b-datepicker name="date_of_birth" :class="{'is-danger': (errors.has('date_of_birth')), 'is-success': fields.date_of_birth &amp;&amp; fields.date_of_birth.valid}" v-validate="{rules:{required:true}}" :focused-date="maxDate" :min-date="minDate" :max-date="maxDate" placeholder="Date of Birth"  required></b-datepicker>
                                         <span class="icon is-small is-left"><i class="fa fa-calendar"></i></span>
                                         <span class="icon is-small is-right">
-                                            <i class="fa" :class="{'fa-warning': errors.has('birth_year'), 'fa-check': fields.birth_year &amp;&amp; fields.birth_year.valid}"></i>
+                                            <i class="fa" :class="{'fa-warning': errors.has('date_of_birth'), 'fa-check': fields.date_of_birth &amp;&amp; fields.date_of_birth.valid}"></i>
                                         </span>
                                     </p>
-                                    <p class="help is-danger" :show="errors.has('birth_year')">@{{ errors.first('birth_year') }}</p>
+                                    <p class="help is-danger" :show="errors.has('date_of_birth')">@{{ errors.first('date_of_birth') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -131,6 +131,7 @@
 
 @section('scripts')
     <script>
+        const today = new Date();
         var app = new Vue({
             el: '#auth',
             data: {
@@ -139,7 +140,9 @@
                 linkAvailable: true,
                 emailAvailable: true,
                 linkValue: "{{ old('link') }}",
-                emailValue: "{{ old('email') }}"
+                emailValue: "{{ old('email') }}",
+                minDate: new Date(today.getFullYear() - 128, today.getMonth(), today.getDate()),
+                maxDate: new Date(today.getFullYear() - 13, today.getMonth(), today.getDate())
             },
             watch: {
                 linkValue: function() {

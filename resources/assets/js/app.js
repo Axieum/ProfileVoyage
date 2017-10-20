@@ -5,7 +5,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.use(Buefy);
+Vue.use(Buefy, {
+    defaultIconPack: 'fa'
+});
+
 Vue.use(VeeValidate);
 
 // Custom Messages.

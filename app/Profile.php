@@ -12,7 +12,7 @@ class Profile extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'birth_year', 'country'
+        'name', 'date_of_birth', 'location'
     ];
 
     /**

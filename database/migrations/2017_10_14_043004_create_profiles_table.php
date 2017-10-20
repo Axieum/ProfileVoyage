@@ -18,8 +18,8 @@ class CreateProfilesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('name');
-            $table->integer('birth_year')->unsigned()->nullable();
-            $table->string('country')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('location')->nullable();
 
             $table->timestamps();
         });

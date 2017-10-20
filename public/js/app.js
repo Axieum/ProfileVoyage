@@ -982,7 +982,10 @@ __webpack_require__(13);
 
 window.Vue = __webpack_require__(36);
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a, {
+    defaultIconPack: 'fa'
+});
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
 
 // Custom Messages.
