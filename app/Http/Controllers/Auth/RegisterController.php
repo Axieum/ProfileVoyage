@@ -76,7 +76,7 @@ class RegisterController extends Controller
 
         // Profile
         $user->profile()->create([
-            'name' => substr($user->email, 0, strpos($user->email, '@')),
+            'name' => str_replace(array('<', '>', '&', '{', '}', '*', '.', '-', '_'), array(' '), substr($user->email, 0, strpos($user->email, '@'))),
             'date_of_birth' => date('Y-m-d', strtotime($data['date_of_birth']))
         ]);
 
