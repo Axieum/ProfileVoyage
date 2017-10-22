@@ -67,6 +67,10 @@ $sides: (top, bottom, left, right);
     .is-nonfixed-touch {
         position: relative!important;
     }
+    .is-fullwidth-touch {
+        width: 90%;
+        max-width: 90%;
+    }
 }
 
 .is-fullwidth {
@@ -80,4 +84,9 @@ $sides: (top, bottom, left, right);
 
 .has-transparentbackground {
     background-color: transparent!important;
+}
+
+.hero.is-dark .tabs.is-boxed a {
+    z-index: 997;
+    border: none;
 }

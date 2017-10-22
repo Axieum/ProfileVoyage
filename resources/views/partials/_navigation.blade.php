@@ -45,19 +45,19 @@
                         <div class="navbar-item has-dropdown is-hoverable">
                             <div class="level is-marginless p-l-5 p-r-5">
                                 <div class="level-left">
-                                    <a href="#!" class="level-item">
+                                    <a href="{{ route('account.edit') }}" class="level-item">
                                         <figure class="image is-24x24">
                                             <img src="{{ asset('img/profile.png') }}" class="is-circle has-border">
                                         </figure>
                                     </a>
-                                    <a href="#!" class="level-item washed-text has-text-weight-semibold is-marginless">{{ Auth::user()->profile->name }}</a>
+                                    <a href="{{ route('account.edit') }}" class="level-item washed-text has-text-weight-semibold is-marginless">{{ Auth::user()->profile->name }}</a>
                                     <span class="level-item icon is-small washed-text m-l-5"><i class="fa fa-chevron-down"></i></span>
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed">
                                 <a class="navbar-item">Profiles</a>
                                 <a class="navbar-item">Notifications</a>
-                                <a class="navbar-item">Account</a>
+                                <a href="{{ route('account.edit') }}" class="navbar-item">Account</a>
                                 <hr class="navbar-divider">
                                 <a href="{{ route('logout') }}" class="navbar-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
@@ -88,18 +88,18 @@
         @else
             <div class="level is-mobile is-fullwidth m-b-15">
                 <div class="level-left is-centered">
-                    <a href="#!" class="level-item m-r-5">
+                    <a href="{{ route('account.edit') }}" class="level-item m-r-5">
                         <figure class="image is-24x24">
                             <img src="{{ asset('img/profile.png') }}" class="is-circle has-border-dark is-thin">
                         </figure>
                     </a>
-                    <a href="#!" class="level-item dark-text has-text-weight-normal">{{ Auth::user()->profile->name }}</a>
+                    <a href="{{ route('account.edit') }}" class="level-item dark-text has-text-weight-normal">{{ Auth::user()->profile->name }}</a>
                 </div>
             </div>
             <div class="navbar-divider"></div>
             <a class="navbar-item">Profiles</a>
             <a class="navbar-item">Notifications</a>
-            <a class="navbar-item">Account</a>
+            <a href="{{ route('account.edit') }}" class="navbar-item">Account</a>
             <hr class="navbar-divider">
             <a href="{{ route('logout') }}" class="navbar-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
