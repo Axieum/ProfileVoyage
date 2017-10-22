@@ -5,4 +5,5 @@
             <p class="subtitle has-text-weight-light is-size-5-desktop is-size-6-touch">@yield('subtitle')</p>
         </div>
     </div>
+    @yield('hero-footer')
 </section>
