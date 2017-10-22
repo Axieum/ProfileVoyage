@@ -16271,7 +16271,7 @@ nav.navbar .navbar-burger.is-active span {
 nav.navbar-mobile {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -20rem;
   bottom: 0;
   width: 20rem;
   max-width: 75%;
@@ -16281,15 +16281,12 @@ nav.navbar-mobile {
   background-color: white;
   -webkit-box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
-  -webkit-transform: translateX(-20rem);
-          transform: translateX(-20rem);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
 nav.navbar-mobile.is-active {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  left: 0;
 }
 
 nav.navbar-mobile .navbar-divider {
@@ -16298,6 +16295,16 @@ nav.navbar-mobile .navbar-divider {
 
 nav.navbar-mobile a.button {
   height: auto;
+}
+
+nav.navbar-mobile .navbar-item {
+  border-radius: 2px;
+  display: block;
+  padding: 0.5em 0.75em;
+}
+
+nav.navbar-mobile .navbar-item:hover {
+  background-color: whitesmoke;
 }
 
 nav.navbar-mobile .navbar-burger-close {

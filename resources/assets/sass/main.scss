@@ -67,7 +67,7 @@ nav.navbar {
 nav.navbar-mobile {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -20rem;
     bottom: 0;
     width: 20rem;
     max-width: 75%;
@@ -76,17 +76,24 @@ nav.navbar-mobile {
     z-index: 1000;
     background-color: white;
     box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
-    transform: translateX(-20rem);
     transition: all 0.2s ease-in-out;
 
     &.is-active {
-        transform: translateX(0);
+        left: 0;
     }
     & .navbar-divider {
         display: block;
     }
     & a.button {
         height: auto;
+    }
+    & .navbar-item {
+        border-radius: 2px;
+        display: block;
+        padding: 0.5em 0.75em;
+        &:hover {
+            background-color: whitesmoke;
+        }
     }
     & .navbar-burger-close {
         color: $grey-dark;
