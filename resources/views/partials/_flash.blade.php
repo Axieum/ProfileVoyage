@@ -1,0 +1,6 @@
+@if (Session::has('message'))
+    <div class="container notification is-{{ Session::get('status') }}">
+        <button class="delete"></button>
+        <p>{{ Session::get('message') }}</p>
+    </div>
+@endif

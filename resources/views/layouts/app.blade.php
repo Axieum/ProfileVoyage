@@ -15,11 +15,13 @@
     <body {{ Route::is('index') ? 'special' : '' }}>
         <nav {{ Route::is('index') ?: 'special' }}>
             @include('partials._navigation')
-            
+
             @if (!Route::is('index'))
                 @include('partials._header')
             @endif
         </nav>
+
+        @include('partials._flash')
 
         <main>
             @yield('content')

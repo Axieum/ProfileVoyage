@@ -19,6 +19,8 @@
             </div>
         </nav>
 
+        @include('partials._flash')
+
         <main class="hero is-fullheight is-fullheight-desktop">
             <div class="hero-body">
                 <div class="container">
