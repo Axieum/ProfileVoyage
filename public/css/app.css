@@ -16446,6 +16446,13 @@ a.button.is-secondary:hover {
   font-size: 14px;
 }
 
+@media screen and (max-width: 1023px) {
+  main {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
 .m-t-0 {
   margin-top: 0px !important;
 }
@@ -17580,11 +17587,6 @@ a.button.is-secondary:hover {
 
   .is-nonfixed-touch {
     position: relative !important;
-  }
-
-  .is-fullwidth-touch {
-    width: 90%;
-    max-width: 90%;
   }
 }
 
