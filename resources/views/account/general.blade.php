@@ -37,11 +37,14 @@
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
+                    <h3 class="title is-4">Update Account Details</h3>
+                    <hr>
+
                     <!-- Name -->
                     <div class="field">
-                        <label class="label">Name</label>
+                        <p class="label is-size-6 has-text-weight-light"><b class="has-text-weight-normal">Name</b> your account (e.g. John Doe)</p>
                         <div class="control has-icons-left has-icons-right">
-                            <input v-model="name" class="input" type="text" placeholder="e.g. John Doe" :class="{'is-danger': errors.has('name'), 'is-success': fields.name &amp;&amp; fields.name.valid }" v-validate="{rules:{alpha_spaces: true, max: 64, min: 2 }}" value="{{ old('name') }}" name="name">
+                            <input v-model="name" class="input" type="text" placeholder="Name" :class="{'is-danger': errors.has('name'), 'is-success': fields.name &amp;&amp; fields.name.valid }" v-validate="{rules:{alpha_spaces: true, max: 64, min: 2 }}" value="{{ old('name') }}" name="name">
                             <span class="icon is-small"><i class="fa fa-user-o"></i></span>
                         </div>
                         <p class="help is-danger" :show="errors.has('name')">@{{ errors.first('name') }}</p>
@@ -49,9 +52,9 @@
 
                     <!-- Location -->
                     <div class="field">
-                        <label class="label">Location</label>
+                        <p class="label is-size-6 has-text-weight-light"><b class="has-text-weight-normal">Where</b> are you? (e.g. England)</p>
                         <div class="control has-icons-left has-icons-right">
-                            <input v-model="location" class="input" type="text" placeholder="e.g. Antarctica" :class="{'is-danger': errors.has('location'), 'is-success': fields.location &amp;&amp; fields.location.valid }" v-validate="{rules:{alpha_spaces: true, max: 85, min: 1 }}" value="{{ old('location') }}" name="location">
+                            <input v-model="location" class="input" type="text" placeholder="Location" :class="{'is-danger': errors.has('location'), 'is-success': fields.location &amp;&amp; fields.location.valid }" v-validate="{rules:{alpha_spaces: true, max: 85, min: 1 }}" value="{{ old('location') }}" name="location">
                             <span class="icon is-small"><i class="fa fa-globe"></i></span>
                         </div>
                         <p class="help is-danger" :show="errors.has('location')">@{{ errors.first('location') }}</p>
@@ -59,7 +62,7 @@
 
                     <!-- Date of Birth -->
                     <div class="field">
-                        <label class="label">Date of Birth</label>
+                        <p class="label is-size-6 has-text-weight-light">When were you <b class="has-text-weight-normal">born</b>?</p>
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="select">
@@ -96,7 +99,7 @@
 
                     <div class="field columns m-t-15">
                         <div class="column is-4 is-offset-4">
-                            <button type="submit" class="button is-primary is-fullwidth" :disabled="submittable == 0">Save Changes!</button>
+                            <button type="submit" class="button is-primary is-fullwidth" :disabled="submittable == 0">Save Changes</button>
                         </div>
                     </div>
                 </form>
