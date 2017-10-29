@@ -8,21 +8,7 @@
             <h2 class="title is-2 is-size-3-touch white-text">Reset Password</h2>
             <div class="card is-rounded m-b-10 form">
                 <div class="card-content">
-                    @if ($errors->any() || session('status'))
-                        <div class="notification {{ $errors->any() ? 'is-danger' : 'is-success' }}">
-                            <button class="delete"></button>
-                            @if (session('status'))
-                                {{ session('status') }}
-                            @endif
-                            @if ($errors->any())
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </div>
-                    @endif
+                    @include('partials._flash')
 
                     <form id="auth" class="form password-reset-form" method="POST" action="{{ route('password.request') }}" v-cloak>
                         {{ csrf_field() }}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Rules\AlphaSpace;
 use Auth;
 use Session;
@@ -18,6 +19,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('throttle:5,1', ['only' => ['update', 'updateSecurity', 'updateEmail']]);
     }
 
     /**
@@ -144,7 +146,35 @@ class AccountController extends Controller
      */
     public function updateSecurity(Request $request)
     {
-        //
+        $this->validateWith([
+            'password_current' => 'required|string',
+            'password' => 'required|string|min:6|confirmed'
+        ]);
+
+        $user = Auth::user();
+
+        // Validate the old password.
+        if (!Hash::check($request->password_current, $user->getAuthPassword()))
+            return redirect()->back()->withErrors(['password_current' => 'Incorrect current password.']);
+
+        // Did they actually try to change the password?
+        if ($request->password === $request->password_current)
+            return redirect()->back()->withErrors(['password' => 'Your new password is the same as your old password.']);
+
+        // Change the password and logout.
+        $user->password = bcrypt($request->password);
+
+        if ($user->save())
+        {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Your password has been successfully changed!');
+            Auth::logout();
+            return redirect(route('login'));
+        } else {
+            Session::flash('status', 'danger');
+            Session::flash('message', 'A problem was encountered changing your password! Try again later.');
+            return redirect()->back();
+        }
     }
 
     /**

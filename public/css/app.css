@@ -16343,7 +16343,7 @@ a.navbar-item.is-active,
 }
 
 .hero-nav {
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
 .hero-nav .hero-body {
@@ -16364,6 +16364,10 @@ a.navbar-item.is-active,
 
 .title .subtitle.muted-text {
   color: #d9d9d9;
+}
+
+.title + hr {
+  margin-top: -1rem;
 }
 
 a,
