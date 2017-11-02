@@ -45,7 +45,7 @@
                         <div class="navbar-item has-dropdown is-hoverable">
                             <div class="level is-marginless p-l-5 p-r-5">
                                 <div class="level-left">
-                                    <a href="{{ route('account.edit') }}" class="level-item">
+                                    <a href="{{ route('account.edit') }}" class="level-item m-r-10">
                                         <figure class="image is-24x24">
                                             <img src="{{ asset('img/profile.png') }}" class="is-circle has-border">
                                         </figure>
