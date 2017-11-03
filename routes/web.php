@@ -21,6 +21,7 @@ Route::get('/home', function () {
 
 Auth::routes();
 Route::get('/register/verify/{token}', 'Auth\RegisterController@verify')->name('auth.verify');
+Route::post('/resendverityemail', 'Auth\ResendVerityEmail@send')->name('auth.sendverityemail');
 Route::get('/verify', function() {
     return view('errors.verity');
 })->name('auth.verity');
