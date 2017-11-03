@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Mail\UserWelcome;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -92,6 +95,9 @@ class RegisterController extends Controller
             'token' => hash_hmac('sha256', Str::random(40), $key),
             'created_at' => now()
         ]);
+
+        // Send welcome emails
+        Mail::to($user->email)->send(new UserWelcome($user));
 
         // User registered
         return $user;
