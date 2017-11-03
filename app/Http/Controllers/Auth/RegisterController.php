@@ -112,18 +112,22 @@ class RegisterController extends Controller
     public function verify($token)
     {
         if (!$token)
-            abort(403, 'Invalid token.');
+            abort(400, 'Invalid token.');
 
         $email_verification = DB::table('email_verifications')->where('token', $token)->first();
-        $user = User::where('id', $email_verification->user_id)->first();
-
-        if (is_null($user))
+        if (is_null($email_verification))
             abort(404, 'Token not found!');
+
+        $user = User::where('id', $email_verification->user_id)->first();
+        if (is_null($user))
+            abort(500, 'An unexpected error occurred. Please try again!');
 
         $user->verified = 1;
         $user->save();
 
-        $email_verification->delete();
+        DB::table('email_verifications')->where('token', $token)->delete();
+
+        return view('basic')->withTitle('Email Verified')->withMessage('The account bound to <b class="has-text-weight-normal">' . $user->email . '</b> has been activated!');
     }
 
     /**
