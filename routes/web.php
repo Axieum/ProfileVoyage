@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::get('/home', function () {
+    return redirect('/');
+});
+
 Auth::routes();
 Route::post('/register/check/{type}', 'Auth\RegisterController@check')->name('auth.check');
 Route::get('/register/verify/{token}', 'Auth\RegisterController@verify')->name('auth.verify');
+Route::get('/verify', function() {
+    return view('errors.verity');
+})->name('auth.verity');
 
 Route::prefix('/account')->group(function() {
     Route::get('/', 'AccountController@edit')->name('account.edit');

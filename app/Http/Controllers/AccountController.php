@@ -8,6 +8,7 @@ use App\Rules\AlphaSpace;
 use Auth;
 use Session;
 use App\Profile;
+use App\Http\Middleware\Verified;
 
 class AccountController extends Controller
 {
@@ -19,6 +20,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('verified');
         $this->middleware('throttle:5,1', ['only' => ['update', 'updateSecurity', 'updateEmail']]);
     }
 
