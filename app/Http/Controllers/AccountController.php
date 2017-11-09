@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Events\UserUpdated;
+use App\Http\Middleware\Verified;
+use App\Profile;
 use App\Rules\AlphaSpace;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Session;
-use App\Profile;
-use App\Http\Middleware\Verified;
 
 class AccountController extends Controller
 {
@@ -136,7 +139,45 @@ class AccountController extends Controller
      */
     public function updateEmail(Request $request)
     {
-        //
+        $this->validateWith([
+            'email' => 'required|email|confirmed'
+        ]);
+
+        $user = Auth::user();
+
+        // Did they actually try to change the email?
+        if ($request->email === $user->email)
+            return redirect()->back()->withErrors(['email' => 'Your new email is the same as your old email.']);
+
+        // Update the email, and send the verification token email.
+        $user->email = $request->email;
+        $user->verified = 0;
+
+        // Handle Email Verification
+        $key = config('app.key');
+
+        if (Str::startsWith($key, 'base64:')) {
+            $key = base64_decode(substr($key, 7));
+        }
+
+        DB::table('email_verifications')->insert([
+            'user_id' => $user->id,
+            'token' => hash_hmac('sha256', Str::random(40), $key),
+            'created_at' => now()
+        ]);
+
+        // Save user.
+        if ($user->save())
+        {
+            event(new UserUpdated($user));
+            Session::flash('status', 'success');
+            Session::flash('message', 'Your email has been successfully changed! Please see verification email.');
+            return redirect(route('auth.verity'));
+        } else {
+            Session::flash('status', 'danger');
+            Session::flash('message', 'A problem was encountered changing your email! Try again later.');
+            return redirect()->back();
+        }
     }
 
     /**
