@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
-use App\Mail\UserWelcome;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Mail;
 use Session;
 
 class RegisterController extends Controller
@@ -96,10 +95,8 @@ class RegisterController extends Controller
             'created_at' => now()
         ]);
 
-        // Send welcome emails
-        Mail::to($user->email)->send(new UserWelcome($user));
-
         // User registered
+        event(new UserRegistered($user));
         return $user;
     }
 
