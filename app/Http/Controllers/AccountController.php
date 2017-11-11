@@ -149,31 +149,36 @@ class AccountController extends Controller
         if ($request->email === $user->email)
             return redirect()->back()->withErrors(['email' => 'Your new email is the same as your old email.']);
 
-        // Update the email, and send the verification token email.
+        // Update the email
         $user->email = $request->email;
-        $user->verified = 0;
 
-        // Handle Email Verification
-        $key = config('app.key');
+        // Handle email verification
+        // If the user is already verified, then we need to generate a new token
+        if ($user->verified)
+        {
+            $user->verified = 0;
 
-        if (Str::startsWith($key, 'base64:')) {
-            $key = base64_decode(substr($key, 7));
+            $key = config('app.key');
+
+            if (Str::startsWith($key, 'base64:')) {
+                $key = base64_decode(substr($key, 7));
+            }
+
+            DB::table('email_verifications')->insert([
+                'user_id' => $user->id,
+                'token' => hash_hmac('sha256', Str::random(40), $key),
+                'created_at' => now()
+            ]);
         }
-
-        DB::table('email_verifications')->insert([
-            'user_id' => $user->id,
-            'token' => hash_hmac('sha256', Str::random(40), $key),
-            'created_at' => now()
-        ]);
 
         // Save user.
         if ($user->save())
         {
             event(new UserUpdated($user));
-            Session::flash('status', 'success');
-            Session::flash('message', 'Your email has been successfully changed! Please see verification email.');
-            return redirect(route('auth.verity'));
-        } else {
+            return view('basic')->withTitle('Email Updated')->withMessage('Your email has been successfully changed! Please see verification email.');
+        }
+        else
+        {
             Session::flash('status', 'danger');
             Session::flash('message', 'A problem was encountered changing your email! Try again later.');
             return redirect()->back();
