@@ -6,7 +6,6 @@ $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
     return [
-        'link' => substr($faker->unique()->slug, 0, 16),
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('password'),
         'remember_token' => str_random(10),

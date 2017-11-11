@@ -40,19 +40,6 @@
                             </div>
                         </div>
 
-                        <!-- Link -->
-                        <div class="field">
-                            <p class="control has-icons-left has-icons-right" :class="{'is-loading': linkLoading}">
-                                <input name="link" v-model="linkValue" :class="{'is-danger': (errors.has('link') || !linkAvailable) &amp;&amp; !linkLoading, 'is-success': fields.link &amp;&amp; fields.link.valid &amp;&amp; linkAvailable}" v-validate="{rules:{required: true, min: 2, max: 16, regex: /^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/}}" class="input" type="text" placeholder="Link" value="{{ old('link') }}" required>
-                                <span class="icon is-small is-left"><i class="fa fa-link"></i></span>
-                                <span class="icon is-small is-right">
-                                    <i class="fa" :class="{'fa-warning': (errors.has('link') || !linkAvailable) &amp;&amp; !linkLoading, 'fa-check': fields.link &amp;&amp; fields.link.valid &amp;&amp; !linkLoading}"></i>
-                                </span>
-                            </p>
-                            <p class="help is-danger" :show="errors.has('link')">@{{ errors.first('link') }}</p>
-                            <p class="help is-danger" v-show="!errors.has('link') &amp;&amp; !linkAvailable &amp;&amp; !linkLoading">That link is already in use.</p>
-                        </div>
-
                         <!-- Password -->
                         <div class="field is-horizontal is-marginless">
                             <div class="field-body">
@@ -121,24 +108,13 @@
         var app = new Vue({
             el: '#auth',
             data: {
-                linkLoading: false,
                 emailLoading: false,
-                linkAvailable: true,
                 emailAvailable: true,
-                linkValue: "{{ old('link') }}",
                 emailValue: "{{ old('email') }}",
                 minDate: new Date(today.getFullYear() - 128, today.getMonth(), today.getDate()),
                 maxDate: new Date(today.getFullYear() - 13, today.getMonth(), today.getDate())
             },
             watch: {
-                linkValue: function() {
-                    this.linkLoading = true;
-                    if (this.linkValue.length >= 2 && this.linkValue.length <= 16 && /([-_]*[a-zA-Z0-9]+([-_]*[a-zA-Z0-9]+)*)/.test(this.linkValue)) {
-                        this.checkLink();
-                    } else {
-                        this.linkLoading = false;
-                    }
-                },
                 emailValue: function() {
                     this.emailLoading = true;
                     var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
@@ -150,21 +126,6 @@
                 }
             },
             methods: {
-                checkLink:  _.debounce(function () {
-                    var app = this;
-                    app.linkAvailable = true;
-                    axios.post('{{ route('auth.check', 'link') }}', {value: app.linkValue})
-                    .then(function (response) {
-                        app.linkLoading = false;
-                        app.linkAvailable = response.data.valid;
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                        app.linkLoading = false;
-                        app.linkAvailable = true; // Ensure they can at least submit the form and get turned away server side.
-                    });
-                }, 1000),
                 checkEmail:  _.debounce(function () {
                     var app = this;
                     app.emailAvailable = true;
@@ -176,7 +137,7 @@
                     .catch(function (error) {
                         console.log(error);
                         app.emailLoading = false;
-                        app.emailAvailable = true; // Ensure they can at least submit the form and get turned away server side.
+                        app.emailAvailable = true;
                     });
                 }, 1000)
             }
