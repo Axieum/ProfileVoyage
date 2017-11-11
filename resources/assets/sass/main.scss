@@ -220,3 +220,10 @@ a.button.is-secondary {
         padding-right: 5%;
     }
 }
+
+.notification.is-fixed {
+    position: fixed;
+    top: 15px;
+    left: 0;
+    right: 0;
+}

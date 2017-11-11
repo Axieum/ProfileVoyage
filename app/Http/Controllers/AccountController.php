@@ -235,7 +235,7 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
-        if (!is_null($user))
+        if ($user->delete())
         {
             Session::flash('status', 'success');
             Session::flash('message', 'Your account has been destroyed.');
@@ -246,7 +246,6 @@ class AccountController extends Controller
             Session::flash('message', 'Something prevented us from destroying your account!');
         }
 
-        Auth::logout();
-        $user->delete();
+        return redirect(route('index'));
     }
 }

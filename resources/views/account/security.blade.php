@@ -85,6 +85,23 @@
                 </form>
             </div>
         </div>
+
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <form id="deleteAccount" class="form" action="{{ route('account.delete') }}" method="POST">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+
+                    <h3 class="title is-4">Destroy Account</h3>
+                    <hr>
+
+                    <p class="label is-size-6 has-text-weight-light">Clicking this button will delete your account. There is <b class="has-text-weight-normal">no turning back</b>!</p>
+                    <div class="column is-4 is-offset-4">
+                        <button type="button" @click="confirmDeletion" class="button is-danger is-fullwidth">Delete Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -115,7 +132,11 @@
                     var equality = this.password === this.password_current;
                     var length = this.password.length > 0 && this.password_current.length > 0 && this.password_confirmation.length > 0;
                     this.submittable = !errors && !equality && length;
-                }, 250)
+                }, 250),
+                confirmDeletion: function() {
+                    if (confirm('Are you sure you want to delete your account? This action cannot be reversed.'))
+                        document.getElementById('deleteAccount').submit();
+                }
             }
         });
     </script>
