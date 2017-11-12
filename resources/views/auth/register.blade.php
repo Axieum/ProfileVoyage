@@ -132,7 +132,7 @@
                     axios.post('{{ route('auth.check', 'email') }}', {value: app.emailValue})
                     .then(function (response) {
                         app.emailLoading = false;
-                        app.emailAvailable = response.data.valid;
+                        app.emailAvailable = response.data;
                     })
                     .catch(function (error) {
                         console.log(error);

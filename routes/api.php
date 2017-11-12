@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/register/check/{type}', 'Auth\RegisterController@check')->name('auth.check');
+Route::post('/register/checkemail', 'Auth\RegisterController@checkEmail')->name('auth.check');

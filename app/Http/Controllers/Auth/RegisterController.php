@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -128,29 +129,11 @@ class RegisterController extends Controller
     /**
      * Check the availability of a request.
      *
-     * @param  string  $type
+     * @param Request $request
      * @return json
      */
-    public function check($type)
+    public function checkEmail(Request $request)
     {
-        $available = false;
-
-        if ($type === 'email')
-        {
-            if (!User::where('email', Input::get('value'))->count())
-            {
-                $available = true;
-            }
-        }
-
-        if ($type === 'link')
-        {
-            if (!User::where('link', Input::get('value'))->count())
-            {
-                $available = true;
-            }
-        }
-
-        return response()->json(array('valid' => $available));
+        return response()->json(!User::where('email', $request->value)->exists());
     }
 }
