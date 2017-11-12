@@ -55,7 +55,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'date_of_birth' => 'required|date|before:' . date( 'Y/m/d', strtotime('-13 year', strtotime(date('Y-m-j')))),
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed'
         ]);
@@ -73,12 +72,6 @@ class RegisterController extends Controller
         $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
-
-        // Profile
-        $user->profile()->create([
-            'name' => str_replace(array('<', '>', '&', '{', '}', '*', '.', '-', '_'), array(' '), substr($user->email, 0, strpos($user->email, '@'))),
-            'date_of_birth' => date('Y-m-d', strtotime($data['date_of_birth']))
         ]);
 
         // Handle Email Verification

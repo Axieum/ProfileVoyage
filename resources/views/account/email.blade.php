@@ -8,7 +8,6 @@
         <nav class="tabs is-boxed is-fullwidth">
             <div class="container">
                 <ul>
-                    <li><a href="{{ route('account.edit') }}"><span class="icon is-small"><i class="fa fa-address-card"></i></span>General</a></li>
                     <li class="is-active"><a><span class="icon is-small"><i class="fa fa-envelope"></i></span>Email</a></li>
                     <li><a href="{{ route('account.edit.security') }}"><span class="icon is-small"><i class="fa fa-lock"></i></span>Security</a></li>
                 </ul>
@@ -69,7 +68,7 @@
                     <p class="label is-size-6 has-text-weight-light">Once updated, you'll need to <b class="has-text-weight-normal">verify</b> your new email.</p>
                     <div class="field columns m-t-15">
                         <div class="column is-4 is-offset-4">
-                            <button type="submit" class="button is-primary is-fullwidth" :disabled="submittable == 0">Change Email!</button>
+                            <button type="submit" class="button is-primary is-fullwidth" :disabled="submittable == 0">Change Email</button>
                         </div>
                     </div>
                 </form>

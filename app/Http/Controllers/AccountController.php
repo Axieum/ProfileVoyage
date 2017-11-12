@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Events\UserUpdated;
 use App\Http\Middleware\Verified;
-use App\Profile;
 use App\Rules\AlphaSpace;
 use Auth;
 use Illuminate\Http\Request;
@@ -24,7 +23,7 @@ class AccountController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('verified');
-        $this->middleware('throttle:5,1', ['only' => ['update', 'updateSecurity', 'updateEmail']]);
+        $this->middleware('throttle:5,1', ['only' => ['updateSecurity', 'updateEmail']]);
     }
 
     /**
@@ -36,17 +35,6 @@ class AccountController extends Controller
     public function show($id)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit()
-    {
-        return view('account.general');
     }
 
     /**
@@ -69,65 +57,6 @@ class AccountController extends Controller
     public function editSecurity()
     {
         return view('account.security');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-        $hasname = false;
-        $haslocation = false;
-
-        if (!(is_null($request->name) || $request->name === Auth::user()->profile->name))
-        {
-            $this->validateWith([
-                'name' => ['sometimes', 'string', new AlphaSpace, 'min:2', 'max:64']
-            ]);
-            $hasname = true;
-        }
-        if (!(is_null($request->location) || $request->location === Auth::user()->profile->location))
-        {
-            $this->validateWith([
-                'location' => ['sometimes', 'string', new AlphaSpace, 'min:1', 'max:85'],
-            ]);
-            $haslocation = true;
-        }
-        $this->validateWith([
-            'dob_day' => 'required_with:dob_month,dob_year|numeric|between:1,31',
-            'dob_month' => 'required_with:dob_day,dob_year|numeric|between:1,12',
-            'dob_year' => 'required_with:dob_day,dob_month|numeric|between:' . (date('Y', strtotime(date('Y-m-j'))) - 128) . ',' . (date('Y', strtotime(date('Y-m-j'))) - 13)
-        ]);
-
-        $profile = Auth::user()->profile;
-
-        if ($hasname)
-            $profile->name = $request->name;
-
-        if ($haslocation)
-            $profile->location = $request->location;
-
-        $curDob = $profile->date_of_birth;
-        $newDob = date('Y-m-d', strtotime($request->dob_year . '-' . $request->dob_month . '-' . $request->dob_day));
-
-        if ($newDob != $curDob)
-            $profile->date_of_birth = $newDob;
-
-        if ($profile->save())
-        {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Your account has been updated!');
-        }
-        else
-        {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'Your account was not updated.');
-        }
-        return redirect()->back();
     }
 
     /**

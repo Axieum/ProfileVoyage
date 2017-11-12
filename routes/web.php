@@ -27,8 +27,7 @@ Route::get('/verify', function() {
 })->name('auth.verity');
 
 Route::prefix('/account')->group(function() {
-    Route::get('/', 'AccountController@edit')->name('account.edit');
-    Route::put('/', 'AccountController@update')->name('account.update');
+    Route::get('/', 'AccountController@editEmail')->name('account.edit');
 
     Route::get('/email', 'AccountController@editEmail')->name('account.edit.email');
     Route::put('/email', 'AccountController@updateEmail')->name('account.update.email');

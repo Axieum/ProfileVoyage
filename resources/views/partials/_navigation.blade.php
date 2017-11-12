@@ -50,7 +50,7 @@
                                             <img src="{{ asset('img/profile.png') }}" class="is-circle has-border">
                                         </figure>
                                     </a>
-                                    <a href="{{ route('account.edit') }}" class="level-item washed-text has-text-weight-semibold is-marginless">{{ Auth::user()->profile->name }}</a>
+                                    <a href="{{ route('account.edit') }}" class="level-item washed-text has-text-weight-semibold is-marginless">{{ substr(Auth::user()->email, 0, strpos(Auth::user()->email, '@')) }}</a>
                                     <span class="level-item icon is-small washed-text m-l-5"><i class="fa fa-chevron-down"></i></span>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                             <img src="{{ asset('img/profile.png') }}" class="is-circle has-border-dark is-thin">
                         </figure>
                     </a>
-                    <a href="{{ route('account.edit') }}" class="level-item dark-text has-text-weight-normal">{{ Auth::user()->profile->name }}</a>
+                    <a href="{{ route('account.edit') }}" class="level-item dark-text has-text-weight-normal">{{ substr(Auth::user()->email, 0, strpos(Auth::user()->email, '@')) }}</a>
                 </div>
             </div>
             <div class="navbar-divider"></div>
