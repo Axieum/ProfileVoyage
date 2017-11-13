@@ -20,7 +20,7 @@
         </nav>
 
         <main class="hero is-fullheight is-fullheight-desktop">
-            <div class="hero-body">
+            <div class="hero-body is-paddingless">
                 <div class="container">
                     @yield('content')
                 </div>

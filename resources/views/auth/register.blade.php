@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="columns is-marginless">
-        <div class="column is-6-desktop is-offset-3-desktop is-8-tablet is-offset-2-tablet">
+        <div class="column is-6-desktop is-offset-3-desktop is-8-tablet is-offset-2-tablet is-12-mobile">
             <h2 class="title is-2 is-size-3-touch white-text">Register</h2>
             <div class="card is-rounded m-b-10 form">
                 <div class="card-content">
@@ -14,9 +14,9 @@
                         {{ csrf_field() }}
 
                         <!-- Email -->
-                        <div class="field is-horizontal is-marginless columns">
+                        <div class="field is-marginless columns">
                             <div class="field-body">
-                                <div class="field column is-8 is-marginless p-l-0 p-r-0 p-t-0">
+                                <div class="field">
                                     <p class="control has-icons-left has-icons-right" :class="{'is-loading': emailLoading}">
                                         <input name="email" v-model="emailValue" :class="{'is-danger': (errors.has('email') || !emailAvailable) &amp;&amp; !emailLoading, 'is-success': fields.email &amp;&amp; fields.email.valid &amp;&amp; emailAvailable}" v-validate="{rules:{required:true, email: true}}" class="input" type="email" placeholder="Email" value="{{ old('email') }}" required>
                                         <span class="icon is-small is-left"><i class="fa fa-envelope-o"></i></span>
@@ -26,16 +26,6 @@
                                     </p>
                                     <p class="help is-danger" :show="errors.has('email')">@{{ errors.first('email') }}</p>
                                     <p class="help is-danger" v-show="!errors.has('email') &amp;&amp; !emailAvailable &amp;&amp; !emailLoading">That email is already in use.</p>
-                                </div>
-                                <div class="field column is-4 is-marginless p-r-0 p-t-0">
-                                    <p class="control has-icons-left has-icons-right">
-                                        <b-datepicker name="date_of_birth" :class="{'is-danger': (errors.has('date_of_birth')), 'is-success': fields.date_of_birth &amp;&amp; fields.date_of_birth.valid}" v-validate="{rules:{required:true}}" :focused-date="maxDate" :min-date="minDate" :max-date="maxDate" placeholder="Date of Birth"  required></b-datepicker>
-                                        <span class="icon is-small is-left"><i class="fa fa-calendar"></i></span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fa" :class="{'fa-warning': errors.has('date_of_birth'), 'fa-check': fields.date_of_birth &amp;&amp; fields.date_of_birth.valid}"></i>
-                                        </span>
-                                    </p>
-                                    <p class="help is-danger" :show="errors.has('date_of_birth')">@{{ errors.first('date_of_birth') }}</p>
                                 </div>
                             </div>
                         </div>

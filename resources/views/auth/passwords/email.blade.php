@@ -27,14 +27,12 @@
                             </div>
                         </div>
 
-                        <div class="field is-horizontal m-t-10">
+                        <div class="field m-t-10">
                             <div class="field-body">
-                                <div class="field is-grouped">
-                                    <div class="control is-fullwidth">
-                                        <div class="columns">
-                                            <div class="column is-6 is-offset-3">
-                                                <button type="submit" class="button is-primary is-fullwidth">Send Reset Link</button>
-                                            </div>
+                                <div class="control is-fullwidth">
+                                    <div class="columns">
+                                        <div class="column is-6 is-offset-3">
+                                            <button type="submit" class="button is-primary is-fullwidth">Send Reset Link</button>
                                         </div>
                                     </div>
                                 </div>
