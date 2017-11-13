@@ -39,8 +39,8 @@ Route::prefix('/account')->group(function() {
 });
 
 Route::get('/profiles', 'ProfileController@index')->name('profile.index');
-Route::get('/create', 'ProfileController@create')->name('profile.new');
-Route::put('/create', 'ProfileController@store')->name('profile.index');
+Route::get('/create', 'ProfileController@create')->name('profile.create');
+Route::put('/create', 'ProfileController@store')->name('profile.store');
 Route::get('/{profileLink?}', 'ProfileController@show')->name('profile.show');
 Route::get('/{profileLink?}/update', 'ProfileController@edit')->name('profile.edit');
 Route::put('/{profileLink?}/update', 'ProfileController@update')->name('profile.update');

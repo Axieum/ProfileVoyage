@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="navbar-dropdown is-boxed">
-                                <a class="navbar-item">Profiles</a>
+                                <a href="{{ route('profile.index') }}" class="navbar-item">Profiles</a>
                                 <a class="navbar-item">Notifications</a>
                                 <a href="{{ route('account.edit') }}" class="navbar-item">Account</a>
                                 <hr class="navbar-divider">
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="navbar-divider"></div>
-            <a class="navbar-item">Profiles</a>
+            <a href="{{ route('profile.index') }}" class="navbar-item">Profiles</a>
             <a class="navbar-item">Notifications</a>
             <a href="{{ route('account.edit') }}" class="navbar-item">Account</a>
             <hr class="navbar-divider">
