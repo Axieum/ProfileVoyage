@@ -223,3 +223,16 @@ a.button.is-secondary {
     left: 0;
     right: 0;
 }
+
+.card-head {
+    margin-bottom: 1rem;
+}
+
+.card[special] {
+    min-height: 100%;
+
+    &:hover {
+        background: $special-background-reverse;
+        background-image: $special-background-reverse;
+    }
+}

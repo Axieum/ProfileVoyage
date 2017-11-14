@@ -86,3 +86,19 @@ $sides: (top, bottom, left, right);
     z-index: 997;
     border: none;
 }
+
+.has-content-vcentered {
+    display: flex;
+    align-items: center;
+}
+
+.has-content-hcentered {
+    display: flex;
+    justify-content: center;
+}
+
+.has-content-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
