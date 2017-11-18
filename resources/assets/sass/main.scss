@@ -236,3 +236,121 @@ a.button.is-secondary {
         background-image: $special-background-reverse;
     }
 }
+
+.profile-image img {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.profile-info {
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.profile-divider {
+    width: 0;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dotted white;
+    transition: width 0.3s ease-in-out;
+}
+.profile-links .card .card-content p {
+    border-bottom: 2px dotted transparent;
+    transition: all 0.2s ease-in-out;
+}
+.card.is-social:hover p {
+    border-bottom: 2px dotted $link;
+    transition: all 0.1s ease-in-out;
+}
+.profile-links .column {
+    transition: all 0.3s ease-in-out;
+
+    & .card.is-social {
+        transition: all 0.3s ease-in-out;
+    }
+}
+.profile-links .column:hover {
+    padding: 0.25rem;
+    transition: all 0.3s ease-in-out;
+
+    & .card.is-social {
+        box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.card.is-social {
+    opacity: 0;
+}
+.card.is-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    & .card-content {
+        padding: 0;
+        height: 100%;
+    }
+    &.is-social .card-image span.icon i {
+        transition: color 0.2s ease-in-out;
+    }
+    &.is-social:hover .card-image span.icon i {
+        transition: color 0.1s ease-in-out;
+
+        &.fa- {
+            &twitter {
+                color: #1da1f2;
+            }
+            &youtube-play {
+                color: #ff0000;
+            }
+            &facebook-square {
+                color: #3b5998;
+            }
+            &spotify {
+                color: #1db954;
+            }
+            &soundcloud {
+                color: #ff8800;
+            }
+            &instagram {
+                color: #c13584;
+            }
+            &snapchat-ghost {
+                color: #fffc00;
+            }
+        }
+    }
+}
+
+#cog span {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &:first-child {
+        top: 3px;
+        right: 0;
+        padding-right: 4px;
+        opacity: 0;
+        text-align: right;
+        transition: all 0.3s ease-in-out;
+    }
+    &:nth-child(2) {
+        transition: rotate(0deg);
+        transition: transform 0.3s ease-in-out;
+    }
+}
+#cog:hover span {
+    &:nth-child(2) {
+        transform: rotate(90deg);
+        transition: transform 0.3s ease-in-out;
+    }
+    &:first-child {
+        transition: all 0.3s ease-in-out;
+        right: 32px;
+        opacity: 1;
+    }
+}

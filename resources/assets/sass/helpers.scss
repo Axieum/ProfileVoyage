@@ -60,12 +60,37 @@ $sides: (top, bottom, left, right);
     }
 }
 
+@include desktop {
+    figure.image.is-256x256-desktop {
+        height: 256px!important;
+        width: 256px!important;
+    }
+}
+
 @include touch {
     .is-fullheight.is-fullheight-desktop {
         min-height: auto;
     }
     .is-nonfixed-touch {
         position: relative!important;
+    }
+    figure.image.is-128x128-touch {
+        height: 128px;
+        width: 128px;
+    }
+}
+
+@include tablet {
+    figure.image.is-128x128-tablet {
+        height: 128px;
+        width: 128px;
+    }
+}
+
+@include mobile {
+    figure.image.is-96x96-mobile {
+        height: 96px;
+        width: 96px;
     }
 }
 

@@ -16471,6 +16471,169 @@ a.button.is-secondary:hover {
   background-image: linear-gradient(45deg, #B79CED 1%, #957FEF 40%, #483E99 99%);
 }
 
+.profile-image img {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile-info {
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile-divider {
+  width: 0;
+  height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dotted white;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+
+.profile-links .card .card-content p {
+  border-bottom: 2px dotted transparent;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.card.is-social:hover p {
+  border-bottom: 2px dotted #B79CED;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.profile-links .column {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-links .column .card.is-social {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-links .column:hover {
+  padding: 0.25rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-links .column:hover .card.is-social {
+  -webkit-box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
+          box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card.is-social {
+  opacity: 0;
+}
+
+.card.is-horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.card.is-horizontal .card-content {
+  padding: 0;
+  height: 100%;
+}
+
+.card.is-horizontal.is-social .card-image span.icon i {
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i {
+  -webkit-transition: color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i.fa-twitter {
+  color: #1da1f2;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i.fa-youtube-play {
+  color: #ff0000;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i.fa-facebook-square {
+  color: #3b5998;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i.fa-spotify {
+  color: #1db954;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i.fa-soundcloud {
+  color: #ff8800;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i.fa-instagram {
+  color: #c13584;
+}
+
+.card.is-horizontal.is-social:hover .card-image span.icon i.fa-snapchat-ghost {
+  color: #fffc00;
+}
+
+#cog span {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#cog span:first-child {
+  top: 3px;
+  right: 0;
+  padding-right: 4px;
+  opacity: 0;
+  text-align: right;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+#cog span:nth-child(2) {
+  -webkit-transition: rotate(0deg);
+  transition: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+#cog:hover span:nth-child(2) {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+#cog:hover span:first-child {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  right: 32px;
+  opacity: 1;
+}
+
 .m-t-0 {
   margin-top: 0px !important;
 }
@@ -17598,6 +17761,13 @@ a.button.is-secondary:hover {
   }
 }
 
+@media screen and (min-width: 1024px) {
+  figure.image.is-256x256-desktop {
+    height: 256px !important;
+    width: 256px !important;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .is-fullheight.is-fullheight-desktop {
     min-height: auto;
@@ -17605,6 +17775,25 @@ a.button.is-secondary:hover {
 
   .is-nonfixed-touch {
     position: relative !important;
+  }
+
+  figure.image.is-128x128-touch {
+    height: 128px;
+    width: 128px;
+  }
+}
+
+@media screen and (min-width: 769px), print {
+  figure.image.is-128x128-tablet {
+    height: 128px;
+    width: 128px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  figure.image.is-96x96-mobile {
+    height: 96px;
+    width: 96px;
   }
 }
 
