@@ -5,9 +5,9 @@
 
 @section('content')
     <div class="container">
-        <div class="columns is-multiline m-b-15">
+        <div class="columns is-multiline is-mobile m-b-15">
             @foreach ($profiles as $profile)
-                <div class="column is-4-desktop is-6-tablet">
+                <div class="column is-4-desktop is-6-tablet is-12-mobile">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -38,10 +38,10 @@
                     </div>
                 </div>
             @endforeach
-            <div class="column is-4">
+            <div class="column is-4-desktop is-6-tablet is-12-mobile">
                 <a href="{{ route('profile.create') }}">
                     <div class="card has-content-centered" special>
-                        <div class="wrapper has-text-centered">
+                        <div class="wrapper has-text-centered p-a-15">
                             <span class="icon is-large white-text"><i class="fa fa-plus"></i></span>
                             <p class="white-text is-size-4 has-text-weight-semibold">Create New</p>
                         </div>
