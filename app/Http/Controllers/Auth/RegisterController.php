@@ -43,7 +43,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except(['verify', 'check']);
+        $this->middleware('guest')->except(['verify', 'checkEmail']);
     }
 
     /**

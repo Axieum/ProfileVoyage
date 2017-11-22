@@ -14,7 +14,7 @@
                         {{ csrf_field() }}
 
                         <!-- Email -->
-                        <div class="field is-marginless columns">
+                        <div class="field">
                             <div class="field-body">
                                 <div class="field">
                                     <p class="control has-icons-left has-icons-right" :class="{'is-loading': emailLoading}">
