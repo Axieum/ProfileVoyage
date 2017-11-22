@@ -22,4 +22,12 @@ class Profile extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Retrieve its country
+     */
+    public function countryObject()
+    {
+        return $this->belongsTo('App\Country', 'country', 'code');
+    }
 }
