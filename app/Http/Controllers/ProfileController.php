@@ -15,8 +15,9 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['checkLink', 'checkName']);
         $this->middleware('verified');
+        $this->middleware('auth:api')->only(['checkLink', 'checkName']);
     }
 
     /**
@@ -115,5 +116,27 @@ class ProfileController extends Controller
         }
 
         return redirect(route('index'));
+    }
+
+    /**
+     * Check the availability of a link request.
+     *
+     * @param Request $request
+     * @return json
+     */
+    public function checkLink(Request $request)
+    {
+        return response()->json(!Profile::where('link', $request->value)->exists());
+    }
+
+    /**
+     * Check the availability of a name request.
+     *
+     * @param Request $request
+     * @return json
+     */
+    public function checkName(Request $request)
+    {
+        return response()->json(!Profile::where('user_id', Auth::user()->id)->where('name', $request->value)->exists());
     }
 }

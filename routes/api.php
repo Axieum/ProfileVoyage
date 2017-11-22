@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/register/checkemail', 'Auth\RegisterController@checkEmail')->name('auth.check');
+Route::post('/profiles/checklink', 'ProfileController@checkLink')->name('profile.check.link');
+Route::post('/profiles/checkname', 'ProfileController@checkName')->name('profile.check.name');
