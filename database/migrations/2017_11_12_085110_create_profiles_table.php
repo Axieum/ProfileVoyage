@@ -22,8 +22,8 @@ class CreateProfilesTable extends Migration
             $table->string('link', 32)->unique();
             $table->string('name', 16);
 
-            $table->string('display_name');
-            $table->string('motto', 255)->default(null)->nullable();
+            $table->string('display_name', 50);
+            $table->string('motto', 100)->default(null)->nullable();
             $table->string('avatar')->default(null)->nullable();
             $table->date('date_of_birth')->default(null)->nullable();
             $table->string('location')->default(null)->nullable();
