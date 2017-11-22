@@ -354,3 +354,11 @@ a.button.is-secondary {
         opacity: 1;
     }
 }
+
+.file-name {
+    background-color: white;
+}
+
+.field.has-addons .control.is-loading::after {
+    z-index: 99;
+}

@@ -127,3 +127,7 @@ $sides: (top, bottom, left, right);
     align-items: center;
     justify-content: center;
 }
+
+.has-rows {
+    flex-direction: column;
+}
