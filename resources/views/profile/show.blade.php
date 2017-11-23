@@ -3,7 +3,7 @@
 @section('title', $profile->display_name . "'s Profile")
 
 @section('content')
-    @if (Auth::user()->id === $profile->user_id)
+    @if (!Auth::guest() && Auth::user()->id === $profile->user_id)
         <a id="cog" class="white-text" href="{{ route('profile.edit', $profile->link) }}">
             <span>Edit Profile</span><span class="icon is-medium"><i class="fa fa-cog"></i></span>
         </a>

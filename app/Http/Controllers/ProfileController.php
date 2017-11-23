@@ -15,8 +15,8 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['checkLink', 'checkName']);
-        $this->middleware('verified');
+        $this->middleware('auth')->except(['checkLink', 'checkName', 'show']);
+        $this->middleware('verified')->except('show');
         $this->middleware('auth:api')->only(['checkLink', 'checkName']);
     }
 
@@ -60,8 +60,10 @@ class ProfileController extends Controller
     public function show($profileLink)
     {
         $profile = Profile::where('link', $profileLink)->first();
-        if (is_null($profile))
+
+        if (is_null($profile) || !$profile->active)
             abort(404, 'Unfortunately, there is nothing here.');
+
         return view('profile.show')->withProfile($profile);
     }
 
