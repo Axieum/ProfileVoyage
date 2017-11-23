@@ -6,6 +6,36 @@ html, body {
 nav.navbar {
     padding: 15px;
 
+    & .navbar-brand img:hover {
+        animation-name: wiggle;
+        animation-iteration-count: infinite;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+        /* originally authored by Nick Pettit - https://github.com/nickpettit/glide - Modified! */
+        @keyframes wiggle {
+            from {
+                transform: none;
+            }
+            15% {
+                transform: rotate3d(0, 0, 1, -5deg);
+            }
+            30% {
+                transform: rotate3d(0, 0, 1, 3deg);
+            }
+            45% {
+                transform: rotate3d(0, 0, 1, -3deg);
+            }
+            60% {
+                transform: rotate3d(0, 0, 1, 2deg);
+            }
+            75% {
+                transform: rotate3d(0, 0, 1, -1deg);
+            }
+            to {
+                transform: none;
+            }
+        }
     & .navbar-menu .navbar-start a {
         color: lighten($primary, 18%);
         &:hover  {
@@ -237,6 +267,12 @@ a.button.is-secondary {
     }
 }
 
+nav.navbar.navbar-profile {
+    opacity: 0;
+    top: -100px;
+    transition: top 1s ease-in-out, opacity 1s ease-in-out;
+}
+
 .profile-image img {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -283,6 +319,20 @@ a.button.is-secondary {
 .card.is-social {
     opacity: 0;
 }
+.card.is-social.fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+    @keyframes fadeInUp {
+        0% {
+            transform: translate3d(0, 100%, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
 .card.is-horizontal {
     display: flex;
     align-items: center;
@@ -326,12 +376,10 @@ a.button.is-secondary {
 }
 
 #cog span {
-    position: absolute;
-    top: 0;
-    right: 0;
-
     &:first-child {
-        top: 3px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         right: 0;
         padding-right: 4px;
         opacity: 0;
@@ -361,4 +409,20 @@ a.button.is-secondary {
 
 .field.has-addons .control.is-loading::after {
     z-index: 99;
+}
+
+.navbar-end.is-mobile {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+.navbar-start.is-mobile {
+    justify-content: flex-start;
+    margin-right: auto;
+}
+.navbar.is-mobile {
+    align-items: stretch;
+    display: flex;
+}
+.navbar.is-mobile > .container {
+    display: flex;
 }

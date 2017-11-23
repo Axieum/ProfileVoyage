@@ -11,12 +11,22 @@
         <title>Profile Voyage | @yield('title')</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link  href="{{ asset('css/animate.css') }}" rel="stylesheet">
     </head>
     <body special>
-        <nav class="navbar has-transparentbackground" role="navigation" aria-label="main navigation">
-            <div class="container navbar-brand has-text-centered">
-                <a href="{{ route('index') }}" class="logo"><img src="{{ asset('img/logo_light.svg') }}" alt="Profile Voyage" width="48px"></a>
+        <nav class="navbar is-mobile navbar-profile has-transparentbackground" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-start is-mobile">
+                    <div class="navbar-brand has-text-centered">
+                        <a href="{{ route('index') }}" class="logo"><img src="{{ asset('img/logo_light.svg') }}" alt="Profile Voyage" width="48px"></a>
+                    </div>
+                </div>
+                @if (!Auth::guest() && Auth::user()->id === $profile->user_id)
+                    <div class="navbar-end is-mobile has-content-vcentered">
+                        <a id="cog" class="white-text" href="{{ route('profile.edit', $profile->link) }}">
+                            <span>Edit Profile</span><span class="icon is-medium"><i class="fa fa-cog"></i></span>
+                        </a>
+                    </div>
+                @endif
             </div>
         </nav>
 

@@ -3,17 +3,12 @@
 @section('title', $profile->display_name . "'s Profile")
 
 @section('content')
-    @if (!Auth::guest() && Auth::user()->id === $profile->user_id)
-        <a id="cog" class="white-text" href="{{ route('profile.edit', $profile->link) }}">
-            <span>Edit Profile</span><span class="icon is-medium"><i class="fa fa-cog"></i></span>
-        </a>
-    @endif
     <div class="profile-image has-content-hcentered">
-        <figure class="image is-256x256-desktop is-128x128-touch">
+        <figure class="image is-256x256-desktop is-192x192-touch">
             <img class="is-circle has-border" src="https://placehold.it/256x256" alt="{{ $profile->display_name }}'s Profile Picture">
         </figure>
     </div>
-    <div class="profile-info has-text-centered m-t-15">
+    <div class="profile-info container has-text-centered m-t-15">
         <h1 class="title white-text is-size-1-desktop is-size-3-touch">{{ $profile->display_name }}</h1>
         @if (!is_null($profile->motto))
             <p class="subtitle has-text-weight-light white-text is-size-4-desktop is-size-6-touch">"<i>{{ $profile->motto }}</i>"</p>
@@ -54,14 +49,17 @@
             setTimeout(function() {
                 $('.profile-divider').css('width', '60%');
             }, 500);
+            setTimeout(function() {
+                $('nav.navbar').css('top', 0).css('opacity', 1);
+            }, 750);
 
             var cards = $('.card.is-social');
 
             $(cards).each(function(i) {
                 let ele = $(this);
                 setTimeout(function() {
-                    ele.addClass('animated').addClass('fadeInUp');
-                }, 250 * i + 750);
+                    ele.addClass('fadeInUp');
+                }, 250 * i + 1000);
             })
         });
     </script>

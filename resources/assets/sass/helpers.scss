@@ -78,6 +78,10 @@ $sides: (top, bottom, left, right);
         height: 128px;
         width: 128px;
     }
+    figure.image.is-192x192-touch {
+        height: 192px;
+        width: 192px;
+    }
 }
 
 @include tablet {
