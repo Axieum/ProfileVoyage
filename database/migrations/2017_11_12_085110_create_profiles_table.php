@@ -27,7 +27,9 @@ class CreateProfilesTable extends Migration
             $table->string('avatar')->default(null)->nullable();
             $table->date('date_of_birth')->default(null)->nullable();
             $table->string('location')->default(null)->nullable();
-            $table->string('country')->default(null)->nullable();
+
+            $table->char('country', 2)->default(null)->nullable();
+            $table->foreign('country')->references('code')->on('countries')->onDelete('set null');
 
             $table->boolean('active')->default(true);
             $table->timestamps();
