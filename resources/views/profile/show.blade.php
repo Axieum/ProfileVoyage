@@ -13,6 +13,25 @@
         @if (!is_null($profile->motto))
             <p class="subtitle has-text-weight-light white-text is-size-4-desktop is-size-6-touch">"<i>{{ $profile->motto }}</i>"</p>
         @endif
+        @if (!is_null($profile->date_of_birth) || !is_null($profile->location) || !is_null($profile->country))
+            <div class="level">
+                    @if (!is_null($profile->date_of_birth))
+                        <div class="level-item">
+                            <span class="icon is-small white-text"><i class="fa fa-birthday-cake"></i></span>&nbsp;<time class="time white-text" datetime="{{ $profile->date_of_birth }}">{{ date('jS \o\f F, Y', strtotime($profile->date_of_birth)) }}</time>
+                        </div>
+                    @endif
+                    @if (!is_null($profile->location))
+                        <div class="level-item">
+                            <span class="icon is-small white-text"><i class="fa fa-map-marker"></i></span>&nbsp;<p class="white-text">{{ $profile->location }}</p>
+                        </div>
+                    @endif
+                    @if (!is_null($profile->country))
+                        <div class="level-item">
+                            <span class="icon is-medium white-text flag-icon flag-icon-{{ strtolower($profile->countryObject->code) }}"></span>&nbsp;<p class="white-text">{{ $profile->countryObject->name }}</p>
+                        </div>
+                    @endif
+            </div>
+        @endif
     </div>
     <p class="profile-divider"></p>
     <div class="profile-links">
