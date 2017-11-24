@@ -7,7 +7,7 @@
     <div class="container">
         <div class="columns is-multiline is-mobile m-b-15">
             @foreach ($profiles as $profile)
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
+                <div class="column is-3-desktop is-4-tablet is-12-mobile">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-1by1">
@@ -19,7 +19,7 @@
                                 <p class="title is-4 m-b-0">{{ $profile->name }}</p>
                                 <a href="{{ route('profile.show', $profile->link) }}" class="is-size-6">
                                     <span class="icon is-small"><i class="fa fa-link"></i></span>
-                                    profile.voyage/{{ $profile->link }}
+                                    {{ substr(route('profile.show', $profile->link), strpos(route('profile.show', $profile->link), '//') + 2) }}
                                 </a>
                                 <a onclick="copyLink(this);" data-value="{{ route('profile.show', $profile->link) }}"><span class="icon is-small"><i class="fa fa-share-square-o"></i></span></a>
                             </div>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="column is-4-desktop is-6-tablet is-12-mobile">
+            <div class="column is-3-desktop is-4-tablet is-12-mobile">
                 <a href="{{ route('profile.create') }}">
                     <div class="card has-content-centered" special>
                         <div class="wrapper has-text-centered p-a-15">
