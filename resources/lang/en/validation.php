@@ -116,6 +116,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'profile identifier',
+        'dob_day' => 'birth day',
+        'dob_month' => 'birth month',
+        'dob_year' => 'birth year'
+    ],
 
 ];

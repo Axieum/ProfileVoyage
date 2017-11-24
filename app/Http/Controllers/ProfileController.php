@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\Rules\AlphaSpace;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -48,7 +51,52 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateWith([
+            'name' => ['required', 'string', 'min:1', 'max:16', 'alpha_dash', Rule::unique('profiles')->where(function ($query) {
+                return $query->where('user_id', Auth::user()->id);
+            })],
+            'link' => 'required|string|min:3|max:32|alpha_dash',
+            'displayName' => 'required|string|min:2|max:50',
+            'motto' => 'sometimes|string|min:1|max:100',
+            'dob_day' => 'required_with:dob_month,dob_year|integer|between:1,31',
+            'dob_month' => 'required_with:dob_day,dob_year|integer|between:1,12',
+            'dob_year' => 'required_with:dob_day,dob_month|integer|between:' . (date('Y') - 128) . ',' . date('Y'),
+            'country' => 'sometimes|string|size:2|exists:countries,code',
+            'location' => ['sometimes', 'nullable', 'string', 'max:32', new AlphaSpace],
+            'avatar' => 'sometimes|nullable|file|mimes:jpeg,png,jpg'
+        ]);
+
+        // Date of birth workaround to support name in dropdown.
+        $dob = null;
+        if (isset($request->dob_day) && isset($request->dob_month) && isset($request->dob_year))
+        {
+            // Parse the supplied day/month/year into a suitable date string ready for database.
+            $dob = date('Y-m-j', strtotime($request->dob_day . '-' . $request->dob_month . '-' . $request->dob_year));
+        }
+
+        $profile = Auth::user()->profiles()->create([
+            'name' => $request->name,
+            'link' => strtolower($request->link),
+            'display_name' => $request->displayName,
+            'motto' => $request->motto,
+            'date_of_birth' => $dob,
+            'location' => $request->location,
+            'country' => (is_null($request->country) ? null : strtoupper($request->country)),
+            'avatar' => null
+        ]);
+
+        if ($profile->save())
+        {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Successfully created a new profile! (' . $profile->name . ')');
+            return redirect(route('profile.index'));
+        }
+        else
+        {
+            Session::flash('status', 'danger');
+            Session::flash('message', 'An error occurred while creating your profile.');
+            return redirect()->back();
+        }
     }
 
     /**
