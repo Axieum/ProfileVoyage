@@ -10,8 +10,8 @@
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
                     <div class="card">
                         <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="https://placehold.it/96x96" alt="Profile avatar">
+                            <figure class="image is-1by1">
+                                <img src="{{ file_exists('avatars\\' . $profile->link . '.jpg') ? '\avatars\\' . $profile->link . '.jpg' : 'avatars\\_default.png' }}" alt="Profile avatar">
                             </figure>
                         </div>
                         <div class="card-content">

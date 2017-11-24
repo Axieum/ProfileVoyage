@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -74,16 +75,30 @@ class ProfileController extends Controller
             $dob = date('Y-m-j', strtotime($request->dob_day . '-' . $request->dob_month . '-' . $request->dob_year));
         }
 
-        $profile = Auth::user()->profiles()->create([
-            'name' => $request->name,
-            'link' => strtolower($request->link),
-            'display_name' => $request->displayName,
-            'motto' => $request->motto,
-            'date_of_birth' => $dob,
-            'location' => $request->location,
-            'country' => (is_null($request->country) ? null : strtoupper($request->country)),
-            'avatar' => null
-        ]);
+        $profile = new Profile();
+        $profile->user_id = Auth::user()->id;
+        $profile->name = $request->name;
+        $profile->link = strtolower($request->link);
+        $profile->display_name = $request->displayName;
+        $profile->motto = $request->motto;
+        $profile->date_of_birth = $dob;
+        $profile->location = $request->location;
+        $profile->country = (is_null($request->country) ? null : strtoupper($request->country));
+
+        // Manipulate and save avatar.
+        if (!is_null($request->avatar))
+        {
+            $img = Image::make($request->file('avatar'));
+            $img->fit(512, 512, function($constraint) {
+                $constraint->upsize();
+            });
+            if (is_null($img->save(public_path('avatars/' . $profile->link . '.jpg'))))
+            {
+                Session::flash('status', 'danger');
+                Session::flash('message', 'An error occurred saving your profile image.');
+                return redirect()->back()->withInput();
+            }
+        }
 
         if ($profile->save())
         {
