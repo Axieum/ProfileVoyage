@@ -57,7 +57,7 @@ class ProfileController extends Controller
             })],
             'link' => 'required|string|min:3|max:32|alpha_dash',
             'displayName' => 'required|string|min:2|max:50',
-            'motto' => 'sometimes|string|min:1|max:100',
+            'motto' => 'sometimes|nullable|string|min:1|max:100',
             'dob_day' => 'required_with:dob_month,dob_year|integer|between:1,31',
             'dob_month' => 'required_with:dob_day,dob_year|integer|between:1,12',
             'dob_year' => 'required_with:dob_day,dob_month|integer|between:' . (date('Y') - 128) . ',' . date('Y'),
@@ -95,7 +95,7 @@ class ProfileController extends Controller
         {
             Session::flash('status', 'danger');
             Session::flash('message', 'An error occurred while creating your profile.');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
     }
 

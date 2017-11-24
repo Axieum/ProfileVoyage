@@ -9,7 +9,7 @@
             <div class="column is-8 is-offset-2">
                 @include('partials._errors')
 
-                <form action="{{ route('profile.store') }}" method="post">
+                <form action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
