@@ -26,7 +26,7 @@
                             <div class="level is-mobile">
                                 <div class="level-left">
                                     <small class="level-item">
-                                        <span class="icon is-small"><i class="fa fa-clock-o"></i></span>&nbsp;<time datetime="{{ $profile->updated_at }}">{{ date('jS \o\f F Y', $profile->updated_at) }}</time>
+                                        <span class="icon is-small"><i class="fa fa-clock-o"></i></span>&nbsp;<time datetime="{{ $profile->updated_at }}">{{ date('jS \o\f F Y', strtotime($profile->updated_at)) }}</time>
                                     </small>
                                 </div>
                             </div>
