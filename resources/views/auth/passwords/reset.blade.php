@@ -8,7 +8,7 @@
             <h2 class="title is-2 is-size-3-touch white-text">Reset Password</h2>
             <div class="card is-rounded m-b-10 form">
                 <div class="card-content">
-                    @include('partials._flash')
+                    @include('partials._errors')
 
                     <form id="auth" class="form password-reset-form" method="POST" action="{{ route('password.request') }}" v-cloak>
                         {{ csrf_field() }}

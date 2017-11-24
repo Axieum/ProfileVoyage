@@ -18,20 +18,10 @@
 
 @section('content')
     <div class="container">
-
-        @if ($errors->any())
-            <div class="notification is-danger">
-                <button class="delete"></button>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         <div class="columns">
             <div class="column is-6 is-offset-3">
+                @include('partials._errors')
+                
                 <form class="form" action="{{ route('account.update.security') }}" method="POST" v-cloak>
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}

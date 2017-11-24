@@ -8,7 +8,7 @@
             <h2 class="title is-2 is-size-3-touch white-text">Register</h2>
             <div class="card is-rounded m-b-10 form">
                 <div class="card-content">
-                    @include('partials._flash')
+                    @include('partials._errors')
 
                     <form id="auth" method="POST" action="{{ route('register') }}" v-cloak>
                         {{ csrf_field() }}
