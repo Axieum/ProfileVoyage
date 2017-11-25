@@ -46,9 +46,7 @@
                             <div class="level is-marginless p-l-5 p-r-5">
                                 <div class="level-left">
                                     <a href="{{ route('account.edit') }}" class="level-item m-r-10">
-                                        <figure class="image is-24x24">
-                                            <img src="{{ asset('img/profile.png') }}" class="is-circle has-border">
-                                        </figure>
+                                        <span class="icon white-text"><i class="fa fa-user-circle"></i></span>
                                     </a>
                                     <a href="{{ route('account.edit') }}" class="level-item washed-text has-text-weight-semibold is-marginless">{{ substr(Auth::user()->email, 0, strpos(Auth::user()->email, '@')) }}</a>
                                     <span class="level-item icon is-small washed-text m-l-5"><i class="fa fa-chevron-down"></i></span>
@@ -89,9 +87,7 @@
             <div class="level is-mobile is-fullwidth m-b-15">
                 <div class="level-left is-centered">
                     <a href="{{ route('account.edit') }}" class="level-item m-r-5">
-                        <figure class="image is-24x24">
-                            <img src="{{ asset('img/profile.png') }}" class="is-circle has-border-dark is-thin">
-                        </figure>
+                        <span class="icon has-text-grey-dark"><i class="fa fa-user-circle"></i></span>
                     </a>
                     <a href="{{ route('account.edit') }}" class="level-item dark-text has-text-weight-normal">{{ substr(Auth::user()->email, 0, strpos(Auth::user()->email, '@')) }}</a>
                 </div>
