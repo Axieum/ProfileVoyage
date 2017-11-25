@@ -78,9 +78,10 @@
             try {
                 var successful = document.execCommand('copy');
                 var msg = successful ? 'successfully' : 'unsuccessfully';
-                alert('The profile link "' + link + '" was copied ' + msg);
+                var type = successful ? 'success' : 'danger';
+                notifications.toast('The profile link "' + link + '" was copied ' + msg, {type: 'is-' + type});
             } catch(error) {
-                alert('Something went wrong, unable to copy the url.');
+                notifications.toast('Something went wrong, unable to copy the url.', {type: 'is-danger'});
             }
 
             // Remove temporary element.

@@ -21,13 +21,12 @@
             @endif
         </nav>
 
-        @include('partials._flash')
-
         <main>
             @yield('content')
         </main>
 
         <script src="{{ asset('js/app.js') }}"></script>
+        @include('partials._flash')
         @yield('scripts')
     </body>
 </html>

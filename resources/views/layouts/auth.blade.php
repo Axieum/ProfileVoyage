@@ -28,6 +28,7 @@
         </main>
 
         <script src="{{ asset('js/app.js') }}"></script>
+        @include('partials._flash')
         @yield('scripts')
     </body>
 </html>

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Session;
+use LaraFlash;
 
 class AccountController extends Controller
 {
@@ -108,8 +108,7 @@ class AccountController extends Controller
         }
         else
         {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'A problem was encountered changing your email! Try again later.');
+            LaraFlash::danger('A problem was encountered changing your email! Try again later.');
             return redirect()->back();
         }
     }
@@ -143,13 +142,11 @@ class AccountController extends Controller
 
         if ($user->save())
         {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Your password has been successfully changed!');
+            LaraFlash::success('Your password has been successfully changed!');
             Auth::logout();
             return redirect(route('login'));
         } else {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'A problem was encountered changing your password! Try again later.');
+            LaraFlash::danger('A problem was encountered changing your password! Try again later.');
             return redirect()->back();
         }
     }
@@ -166,13 +163,11 @@ class AccountController extends Controller
 
         if ($user->delete())
         {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Your account has been destroyed.');
+            LaraFlash::success('Your account has been destroyed.');
         }
         else
         {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'Something prevented us from destroying your account!');
+            LaraFlash::danger('Something prevented us from destroying your account!');
         }
 
         return redirect(route('index'));

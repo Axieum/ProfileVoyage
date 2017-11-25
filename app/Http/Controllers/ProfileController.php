@@ -7,8 +7,8 @@ use App\Rules\AlphaSpace;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
+use LaraFlash;
 
 class ProfileController extends Controller
 {
@@ -94,22 +94,19 @@ class ProfileController extends Controller
             });
             if (is_null($img->save(public_path('avatars/' . $profile->link . '.png'))))
             {
-                Session::flash('status', 'danger');
-                Session::flash('message', 'An error occurred saving your profile image.');
+                LaraFlash::danger('An error occurred saving your profile image.');
                 return redirect()->back()->withInput();
             }
         }
 
         if ($profile->save())
         {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Successfully created a new profile! (' . $profile->name . ')');
-            return redirect(route('profile.index'));
+            LaraFlash::success('Successfully created a new profile! (' . $profile->name . ')');
+            return redirect(route('profile.show', $profile->link));
         }
         else
         {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'An error occurred while creating your profile.');
+            LaraFlash::danger('An error occurred while creating your profile.');
             return redirect()->back()->withInput();
         }
     }
@@ -171,13 +168,11 @@ class ProfileController extends Controller
 
         if ($profile->delete())
         {
-            Session::flash('status', 'success');
-            Session::flash('message', 'The profile (' . $profileLink . ') has been destroyed.');
+            LaraFlash::success('The profile (' . $profileLink . ') has been destroyed.');
         }
         else
         {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'Something prevented us from destroying the profile!');
+            LaraFlash::danger('Something prevented us from destroying the profile!');
         }
 
         return redirect(route('index'));
