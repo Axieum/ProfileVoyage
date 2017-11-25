@@ -190,6 +190,9 @@
                 location: "{{ old('location') }}",
                 submittable: false
             },
+            mounted: function() {
+                this.openSesame();
+            },
             watch: {
                 name: function() {
                     this.nameLoading = true;

@@ -92,7 +92,7 @@ class ProfileController extends Controller
             $img->fit(512, 512, function($constraint) {
                 $constraint->upsize();
             });
-            if (is_null($img->save(public_path('avatars/' . $profile->link . '.jpg'))))
+            if (is_null($img->save(public_path('avatars/' . $profile->link . '.png'))))
             {
                 Session::flash('status', 'danger');
                 Session::flash('message', 'An error occurred saving your profile image.');

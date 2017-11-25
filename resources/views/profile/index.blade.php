@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-1by1">
-                                <img src="{{ file_exists('avatars\\' . $profile->link . '.jpg') ? '\avatars\\' . $profile->link . '.jpg' : 'avatars\\_default.png' }}" alt="Profile avatar">
+                                <img src="{{ file_exists('avatars\\' . $profile->link . '.png') ? '\avatars\\' . $profile->link . '.png' : 'avatars\\_default.png' }}" alt="Profile avatar">
                             </figure>
                         </div>
                         <div class="card-content">
