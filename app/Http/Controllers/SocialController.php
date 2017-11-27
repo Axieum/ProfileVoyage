@@ -72,6 +72,9 @@ class SocialController extends Controller
         $socialValue = null;
         switch ($platformObject->name)
         {
+            case 'twitter':
+                $socialValue = $entity['user_id'];
+                break;
             default:
                 $socialValue = isset($entity['user_id']) ? $entity['user_id'] : null;
                 break;

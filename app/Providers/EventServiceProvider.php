@@ -20,7 +20,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\SendVerityEmail'
         ],
         'SocialiteProviders\Manager\SocialiteWasCalled' => [
-            //
+            'SocialiteProviders\Twitter\TwitterExtendSocialite@handle'
         ]
     ];
 

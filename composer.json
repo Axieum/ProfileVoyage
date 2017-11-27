@@ -12,7 +12,8 @@
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "socialiteproviders/manager": "^3.3"
+        "socialiteproviders/manager": "^3.3",
+        "socialiteproviders/twitter": "^3.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
