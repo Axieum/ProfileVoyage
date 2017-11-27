@@ -81,6 +81,13 @@ class SocialController extends Controller
         }
         $social->value = $socialValue;
 
+        // Check if duplicate entry (would prefer a composite unique in the database).
+        if(Social::where('user_id', Auth::user()->id)->where('platform_id', $platformObject->id)->where('value', $socialValue)->exists())
+        {
+            LaraFlash::warning('You\'ve already linked that ' . $platformObject->display_name . ' account!');
+            return redirect(route('link.index'));
+        }
+
         // Return
         if (!is_null($socialValue) && $social->save())
             LaraFlash::success('Successfully linked a new ' . $platformObject->display_name . ' account!');
