@@ -19,6 +19,7 @@ Route::get('/home', function () {
     return redirect('/');
 });
 
+// Authentication
 Auth::routes();
 Route::get('/register/verify/{token}', 'Auth\RegisterController@verify')->name('auth.verify');
 Route::post('/resendverityemail', 'Auth\ResendVerityEmail@send')->name('auth.sendverityemail');
@@ -26,6 +27,7 @@ Route::get('/verify', function() {
     return view('errors.verity');
 })->name('auth.verity');
 
+// Account
 Route::prefix('/account')->group(function() {
     Route::get('/', 'AccountController@editEmail')->name('account.edit');
 
@@ -38,6 +40,7 @@ Route::prefix('/account')->group(function() {
     Route::delete('/delete', 'AccountController@destroy')->name('account.delete');
 });
 
+// Profiles
 Route::get('/profiles', 'ProfileController@index')->name('profile.index');
 Route::get('/create', 'ProfileController@create')->name('profile.create');
 Route::put('/create', 'ProfileController@store')->name('profile.store');
@@ -45,3 +48,12 @@ Route::get('/@{profileLink?}', 'ProfileController@show')->name('profile.show');
 Route::get('/@{profileLink?}/update', 'ProfileController@edit')->name('profile.edit');
 Route::put('/@{profileLink?}/update', 'ProfileController@update')->name('profile.update');
 Route::delete('@/{profileLink?}/delete', 'ProfileController@destroy')->name('profile.delete');
+
+// Socials
+Route::prefix('/link')->group(function() {
+    Route::get('/', 'SocialController@index')->name('link.index');
+
+    Route::get('/{platform}', 'SocialController@request')->name('link.request');
+    Route::get('/{platform}/callback', 'SocialController@callback')->name('link.callback');
+});
+Route::delete('/unlink/{id}', 'SocialController@unlink')->name('unlink');

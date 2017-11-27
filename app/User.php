@@ -34,4 +34,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Profile');
     }
+
+    /**
+     * Retrieve their linked socials
+     */
+    public function socials()
+    {
+        return $this->hasMany('App\Social');
+    }
 }

@@ -30,4 +30,12 @@ class Profile extends Model
     {
         return $this->belongsTo('App\Country', 'country', 'code');
     }
+
+    /**
+     * Retrieve its socials
+     */
+    public function socials()
+    {
+        return $this->belongsToMany('App\Social')->withTimestamps();
+    }
 }

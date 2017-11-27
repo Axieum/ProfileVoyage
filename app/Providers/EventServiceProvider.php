@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\UserUpdated' => [
             'App\Listeners\SendVerityEmail'
+        ],
+        'SocialiteProviders\Manager\SocialiteWasCalled' => [
+            //
         ]
     ];
 
