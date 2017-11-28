@@ -6,7 +6,7 @@
 @section('hero-footer')
     <div class="hero-foot">
         <nav class="tabs is-boxed is-fullwidth">
-            <div class="container">
+            <div class="container is-fullwidth p-l-15 p-r-15">
                 <ul>
                     <li><a href="{{ route('account.edit.email') }}"><span class="icon is-small"><i class="fa fa-envelope"></i></span>Email</a></li>
                     <li class="is-active"><a><span class="icon is-small"><i class="fa fa-lock"></i></span>Security</a></li>
@@ -31,7 +31,7 @@
 
                     <!-- Current Password -->
                     <div class="field">
-                        <p class="label is-size-6 has-text-weight-light">You must provide your <b class="has-text-weight-normal">current password</b> for security purposes.</p>
+                        <p class="label is-size-5-desktop is-size-6-touch has-text-weight-light">You must provide your <b class="has-text-weight-normal">current password</b> for security purposes.</p>
                         <div class="control has-icons-left has-icons-right">
                             <input v-model="password_current" type="password" class="input" placeholder="Current Password" name="password_current" required :class="{'is-danger': errors.has('password_current'), 'is-success': fields.password_current &amp;&amp; fields.password_current.valid }" v-validate="{rules:{required: true}}">
                             <span class="icon is-small is-left"><i class="fa fa-unlock"></i></span>
@@ -43,7 +43,7 @@
 
                     <!-- New Password -->
                     <div class="field">
-                        <p class="label is-size-6 has-text-weight-light">Once set, this will be your <b class="has-text-weight-normal">new password</b> for logging in.</p>
+                        <p class="label is-size-5-desktop is-size-6-touch has-text-weight-light">Once set, this will be your <b class="has-text-weight-normal">new password</b> for logging in.</p>
                         <div class="control has-icons-left has-icons-right">
                             <input v-model="password" type="password" class="input" placeholder="New Password" name="password" required :class="{'is-danger': errors.has('password'), 'is-success': fields.password &amp;&amp; fields.password.valid}" v-validate="{rules:{required:true, min:6, confirmed: 'password_confirmation'}}">
                             <span class="icon is-small"><i class="fa fa-unlock-alt"></i></span>
@@ -84,7 +84,7 @@
                     <h3 class="title is-4">Destroy Account</h3>
                     <hr>
 
-                    <p class="label is-size-6 has-text-weight-light">Clicking this button will delete your account. There is <b class="has-text-weight-normal">no turning back</b>!</p>
+                    <p class="label is-size-5-desktop is-size-6-touch has-text-weight-light">Clicking this button will delete your account. There is <b class="has-text-weight-normal">no turning back</b>!</p>
                     <div class="column is-4 is-offset-4">
                         <button type="button" @click="confirmDeletion" class="button is-danger is-fullwidth">Delete Account</button>
                     </div>

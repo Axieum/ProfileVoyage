@@ -6,7 +6,7 @@
 @section('hero-footer')
     <div class="hero-foot">
         <nav class="tabs is-boxed is-fullwidth">
-            <div class="container">
+            <div class="container is-fullwidth p-l-15 p-r-15">
                 <ul>
                     <li class="is-active"><a><span class="icon is-small"><i class="fa fa-envelope"></i></span>Email</a></li>
                     <li><a href="{{ route('account.edit.security') }}"><span class="icon is-small"><i class="fa fa-lock"></i></span>Security</a></li>
@@ -21,7 +21,7 @@
         <div class="columns">
             <div class="column is-6 is-offset-3">
                 @include('partials._errors')
-                
+
                 <form class="form" action="{{ route('account.update.email') }}" method="POST" v-cloak>
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
@@ -31,7 +31,7 @@
 
                     <!-- New Email -->
                     <div class="field">
-                        <p class="label is-size-6 has-text-weight-light">Your current email is <b class="has-text-weight-normal">{{ Auth::user()->email }}</b>.</p>
+                        <p class="label is-size-5-desktop is-size-6-touch has-text-weight-light">Your current email is <b class="has-text-weight-normal">{{ Auth::user()->email }}</b>.</p>
                         <p class="control has-icons-left has-icons-right" :class="{'is-loading': emailLoading}">
                             <input name="email" v-model="emailValue" :class="{'is-danger': (errors.has('email') || !emailAvailable) &amp;&amp; !emailLoading, 'is-success': fields.email &amp;&amp; fields.email.valid &amp;&amp; emailAvailable}" v-validate="{rules:{required:true, email: true}}" class="input" type="email" placeholder="Email" value="{{ old('email') }}" required>
                             <span class="icon is-small is-left"><i class="fa fa-envelope-o"></i></span>
@@ -55,7 +55,7 @@
                         <p class="help is-danger" :show="errors.has('email_confirmation')">@{{ errors.first('email_confirmation') }}</p>
                     </div>
 
-                    <p class="label is-size-6 has-text-weight-light">Once updated, you'll need to <b class="has-text-weight-normal">verify</b> your new email.</p>
+                    <p class="label is-size-5-desktop is-size-6-touch has-text-weight-light">Once updated, you'll need to <b class="has-text-weight-normal">verify</b> your new email.</p>
                     <div class="field columns m-t-15">
                         <div class="column is-4 is-offset-4">
                             <button type="submit" class="button is-primary is-fullwidth" :disabled="submittable == 0">Change Email</button>
