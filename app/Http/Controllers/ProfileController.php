@@ -56,7 +56,7 @@ class ProfileController extends Controller
             'name' => ['required', 'string', 'min:1', 'max:16', 'alpha_dash', Rule::unique('profiles')->where(function ($query) {
                 return $query->where('user_id', Auth::user()->id);
             })],
-            'link' => 'required|string|min:3|max:32|alpha_dash',
+            'link' => 'required|string|min:3|max:32|alpha_dash|unique:profiles',
             'displayName' => 'required|string|min:2|max:50',
             'motto' => 'sometimes|nullable|string|min:1|max:100',
             'dob_day' => 'required_with:dob_month,dob_year|integer|between:1,31',
