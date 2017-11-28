@@ -9,12 +9,23 @@
             <div class="column is-8 is-offset-2">
                 @include('partials._errors')
 
+                <form id="deleteProfile" action="{{ route('profile.delete', $profile->link) }}" method="post" style="display: none;">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                </form>
                 <form action="{{ route('profile.update', $profile->link) }}" method="post" enctype="multipart/form-data" v-on:change="openSesame">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
-                    <h3 class="title is-4">Editing: <span class="has-text-weight-normal">{{ $profile->name }}</span></h3>
-                    <hr>
+                    <div class="level is-mobile is-marginless">
+                        <div class="level-left">
+                            <h3 class="title is-4">Editing: <span class="has-text-weight-normal">{{ $profile->name }}</span></h3>
+                        </div>
+                        <div class="level-right">
+                            <a href="" @click.prevent.stop="confirmDeletion" class="button is-danger">Delete Profile</a>
+                        </div>
+                    </div>
+                    <hr style="margin-top: 0.5rem;">
 
                     <!-- Name -->
                     <p class="is-size-5-desktop is-size-6-touch has-text-weight-light m-t-15 m-b-5">A profile identifier allows you to tell <b class="has-text-weight-normal">profiles apart</b>.</p>
@@ -242,6 +253,7 @@
                     var sibs = $(e.srcElement).siblings('span');
                     $(sibs[1]).html(e.target.files[0].name);
                     this.avatar = true;
+                    this.openSesame();
                 },
                 updateCountry: function(e) {
                     this.country = e.target.value;
@@ -292,7 +304,19 @@
                     var length = this.name.length > 0 && this.link.length > 0 && this.displayName.length > 0;
                     var changed = this.avatar || (this.original != this.name + this.link + this.displayName + this.motto + this.country + this.location + this.dob_day + this.dob_month + this.dob_year);
                     this.submittable = !errors && length && changed;
-                }, 250)
+                }, 250),
+                confirmDeletion: function() {
+                    this.$dialog.confirm({
+                        title: 'Deleting Profile',
+                        message: 'Are you sure you want to <b>delete</b> this profile? This action cannot be reversed.',
+                        confirmText: 'Delete Profile',
+                        type: 'is-danger',
+                        hasIcon: true,
+                        onConfirm: () => {
+                            document.getElementById('deleteProfile').submit();
+                        }
+                    });
+                }
             }
         });
     </script>

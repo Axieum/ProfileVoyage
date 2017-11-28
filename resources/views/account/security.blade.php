@@ -21,7 +21,7 @@
         <div class="columns">
             <div class="column is-6 is-offset-3">
                 @include('partials._errors')
-                
+
                 <form class="form" action="{{ route('account.update.security') }}" method="POST" v-cloak>
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
@@ -123,8 +123,16 @@
                     this.submittable = !errors && !equality && length;
                 }, 250),
                 confirmDeletion: function() {
-                    if (confirm('Are you sure you want to delete your account? This action cannot be reversed.'))
-                        document.getElementById('deleteAccount').submit();
+                    this.$dialog.confirm({
+                        title: 'Deleting Account',
+                        message: 'Are you sure you want to <b>delete</b> your account? This action cannot be reversed.',
+                        confirmText: 'Delete Account',
+                        type: 'is-danger',
+                        hasIcon: true,
+                        onConfirm: () => {
+                            document.getElementById('deleteAccount').submit();
+                        }
+                    });
                 }
             }
         });

@@ -47,7 +47,7 @@ Route::put('/create', 'ProfileController@store')->name('profile.store');
 Route::get('/@{profileLink?}', 'ProfileController@show')->name('profile.show');
 Route::get('/@{profileLink?}/edit', 'ProfileController@edit')->name('profile.edit');
 Route::put('/@{profileLink?}/edit', 'ProfileController@update')->name('profile.update');
-Route::delete('@/{profileLink?}/delete', 'ProfileController@destroy')->name('profile.delete');
+Route::delete('/@{profileLink?}/delete', 'ProfileController@destroy')->name('profile.delete');
 
 // Socials
 Route::prefix('/link')->group(function() {
