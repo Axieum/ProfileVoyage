@@ -4,17 +4,17 @@
 @section('subtitle', 'Add or remove your social accounts')
 
 @section('content')
-    <div class="columns">
-        <div class="column is-6 is-offset-3">
-            @foreach ($socials as $social)
+    <div class="columns is-multiline">
+        @foreach ($socials as $social)
+            <div class="column is-6 is-offset-3">
                 <div class="card is-horizontal is-rounded">
                     <div class="card-image">
                         <figure class="image is-64x64 has-content-centered">
-                            <span class="icon is-large"><i class="fa fa-{{ $social->platform->name }}"></i></span>
+                            <span class="icon is-large"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
                         </figure>
                     </div>
                     <div class="card-content">
-                        <p class="title is-size-4-desktop is-size-5-touch">{{ $social->value }}</p>
+                        <a href="{{ $social->url }}" class="title is-size-4-desktop is-size-5-touch">{{ $social->value }}</a>
                     </div>
                     <div class="card-actions level">
                         <div class="level-item">
@@ -28,7 +28,9 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
+        <div class="column is-6 is-offset-3">
             @if (sizeof($socials) > 0)
                 <hr>
             @endif
@@ -40,8 +42,8 @@
                         <span class="select">
                             <select name="platform">
                                 <option selected disabled>Choose a Platform</option>
-                                @foreach ($platforms as $profile)
-                                    <option value="{{ $profile->name }}" {{ $profile->name == old('name') ? 'selected' : '' }}>{{ $profile->display_name }}</option>
+                                @foreach ($platforms as $platform)
+                                    <option value="{{ $platform->name }}" {{ $platform->name == old('name') ? 'selected' : '' }}>{{ $platform->display_name }}</option>
                                 @endforeach
                             </select>
                         </span>

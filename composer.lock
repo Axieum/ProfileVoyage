@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bee810aea5f4cb439d3f3dc581857872",
+    "content-hash": "e023bdf12cb2561943be37462fea9c7e",
     "packages": [
         {
             "name": "devmarketer/laraflash",
@@ -1819,6 +1819,43 @@
                 }
             ],
             "description": "Twitter OAuth1 Provider for Laravel Socialite",
+            "time": "2017-01-25T09:48:29+00:00"
+        },
+        {
+            "name": "socialiteproviders/youtube",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/YouTube.git",
+                "reference": "b3082e9a699a78a8d14d50d0651bd5d2dd292972"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/YouTube/zipball/b3082e9a699a78a8d14d50d0651bd5d2dd292972",
+                "reference": "b3082e9a699a78a8d14d50d0651bd5d2dd292972",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\YouTube\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de"
+                }
+            ],
+            "description": "YouTube OAuth2 Provider for Laravel Socialite",
             "time": "2017-01-25T09:48:29+00:00"
         },
         {

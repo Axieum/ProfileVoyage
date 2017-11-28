@@ -13,7 +13,8 @@ class SocialPlatformSeeder extends Seeder
     {
         // Add a platform here ('name' => 'display_name')
         $platforms = array(
-            'twitter' => 'Twitter'
+            'twitter' => 'Twitter',
+            'youtube' => 'YouTube'
         );
 
         foreach ($platforms as $name => $displayName) {

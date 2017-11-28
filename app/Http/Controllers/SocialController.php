@@ -66,7 +66,7 @@ class SocialController extends Controller
             abort(404, 'Unsupported platform! (' . $platform . ')');
 
         // Retrieve the entity.
-        $entity = Socialite::driver($platformObject->name)->user()->accessTokenResponseBody;
+        $entity = Socialite::driver($platformObject->name)->user();
 
         // Link entity to the user.
         $social = new Social;
@@ -75,16 +75,23 @@ class SocialController extends Controller
 
         // Handle the stored value (UUID, Username, etc.)
         $socialValue = null;
+        $socialUrl = null;
         switch ($platformObject->name)
         {
             case 'twitter':
-                $socialValue = '@' . $entity['screen_name'];
+                $socialValue = '@' . $entity->accessTokenResponseBody['screen_name'];
+                $socialUrl = 'https://twitter.com/' . $socialValue;
+                break;
+            case 'youtube':
+                $socialValue = $entity->user['snippet']['title'];
+                $socialUrl = 'https://youtube.com/channel/' . $entity->user['id'];
                 break;
             default:
-                $socialValue = isset($entity['user_id']) ? $entity['user_id'] : null;
+                $socialValue = isset($entity->accessTokenResponseBody['user_id']) ? $entity->accessTokenResponseBody['user_id'] : null;
                 break;
         }
         $social->value = $socialValue;
+        $social->url = $socialUrl;
 
         // Check if duplicate entry (would prefer a composite unique in the database).
         if(Social::where('user_id', Auth::user()->id)->where('platform_id', $platformObject->id)->where('value', $socialValue)->exists())
@@ -94,7 +101,7 @@ class SocialController extends Controller
         }
 
         // Return
-        if (!is_null($socialValue) && $social->save())
+        if (!(is_null($socialValue) || is_null($socialUrl)) && $social->save())
             LaraFlash::success('Successfully linked a new ' . $platformObject->display_name . ' account!');
         else
             LaraFlash::danger('Something prevented us from linking the ' . $platformObject->display_name . ' account!');
