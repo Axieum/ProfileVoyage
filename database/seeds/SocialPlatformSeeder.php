@@ -12,7 +12,9 @@ class SocialPlatformSeeder extends Seeder
     public function run()
     {
         // Add a platform here ('name' => 'display_name')
-        $platforms = array();
+        $platforms = array(
+            'twitter' => 'Twitter'
+        );
 
         foreach ($platforms as $name => $displayName) {
             if (!DB::table('social_platforms')->where('name', $name)->exists())
