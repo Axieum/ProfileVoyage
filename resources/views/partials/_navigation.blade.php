@@ -17,7 +17,8 @@
                         @guest
                             <a href="{{ route('index') }}" class="level-item navbar-item">Getting Started</a>
                         @else
-                            <a href="#!" class="level-item navbar-item">Dashboard</a>
+                            <a href="{{ route('profile.create') }}" class="level-item navbar-item">Create</a>
+                            <a href="{{ route('link.index') }}" class="level-item navbar-item">Link</a>
                         @endguest
                         <a href="#!" class="level-item navbar-item">Learn More</a>
                         <a href="#!" class="level-item navbar-item">Help</a>
@@ -54,7 +55,7 @@
                             </div>
                             <div class="navbar-dropdown is-boxed">
                                 <a href="{{ route('profile.index') }}" class="navbar-item">Profiles</a>
-                                <a class="navbar-item">Notifications</a>
+                                <a href="{{ route('link.index') }}" class="navbar-item">Social Links</a>
                                 <a href="{{ route('account.edit') }}" class="navbar-item">Account</a>
                                 <hr class="navbar-divider">
                                 <a href="{{ route('logout') }}" class="navbar-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -93,8 +94,9 @@
                 </div>
             </div>
             <div class="navbar-divider"></div>
+            <a href="{{ route('profile.create') }}" class="navbar-item">Create</a>
             <a href="{{ route('profile.index') }}" class="navbar-item">Profiles</a>
-            <a class="navbar-item">Notifications</a>
+            <a href="{{ route('link.index') }}" class="navbar-item">Social Links</a>
             <a href="{{ route('account.edit') }}" class="navbar-item">Account</a>
             <hr class="navbar-divider">
             <a href="{{ route('logout') }}" class="navbar-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
