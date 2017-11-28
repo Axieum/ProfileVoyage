@@ -12,7 +12,7 @@ class Social extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'platform_id', 'value'
+        'user_id', 'platform_id', 'value', 'url'
     ];
 
     /**
@@ -36,6 +36,6 @@ class Social extends Model
      */
     public function profiles()
     {
-        return $this->belongsToMany('App\Profile')->withTimestamps();;
+        return $this->belongsToMany('App\Profile')->withTimestamps();
     }
 }

@@ -24,6 +24,7 @@ class CreateSocialsTable extends Migration
 
             // Social identifier (e.g. Gamertag, Username, UUID, etc.).
             $table->string('value');
+            $table->string('url');
 
             $table->timestamps();
         });

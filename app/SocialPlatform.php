@@ -22,4 +22,17 @@ class SocialPlatform extends Model
     {
         return $this->hasMany('App\Social');
     }
+
+    /**
+     * Translate platform for font-awesome icon
+     */
+    public function icon()
+    {
+        $translations = array(
+            'youtube' => 'youtube-play',
+            'snapchat' => 'snapchat-ghost',
+            'facebook' => 'facebook-square'
+        );
+        return isset($translations[$this->name]) ? $translations[$this->name] : $this->name;
+    }
 }
