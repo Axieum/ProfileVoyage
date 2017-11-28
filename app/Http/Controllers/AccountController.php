@@ -22,7 +22,6 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('verified');
         $this->middleware('throttle:5,1', ['only' => ['updateSecurity', 'updateEmail']]);
     }
 
