@@ -22,6 +22,7 @@ class ProfileController extends Controller
         $this->middleware('auth')->except(['checkLink', 'checkName', 'show']);
         $this->middleware('verified')->except('show');
         $this->middleware('auth:api')->only(['checkLink', 'checkName']);
+        $this->middleware('throttle:3,1', ['only' => ['store', 'update']]);
     }
 
     /**
