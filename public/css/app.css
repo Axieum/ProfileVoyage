@@ -18736,43 +18736,83 @@ nav.navbar.navbar-profile {
 .card.is-horizontal .card-content {
   padding: 0;
   height: 100%;
+  width: 100%;
 }
 
-.card.is-horizontal.is-social .card-image span.icon i {
+.card.is-horizontal .card-actions {
+  float: right;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid #4a4a4a;
+}
+
+.card.is-horizontal .card-actions .level-item:not(:nth-child(1)) {
+  margin-left: 0.5rem;
+}
+
+.card.is-horizontal .card-image span.icon i {
   -webkit-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i {
+.card.is-horizontal:hover .card-actions button.is-danger,
+.card.is-horizontal:hover .card-actions a.is-danger {
+  background-color: #ff3860;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.card.is-horizontal:hover .card-actions button.is-danger:hover,
+.card.is-horizontal:hover .card-actions a.is-danger:hover {
+  background-color: #ff0537;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.card.is-horizontal:hover .card-actions button.is-primary,
+.card.is-horizontal:hover .card-actions a.is-primary {
+  background-color: #B79CED;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.card.is-horizontal:hover .card-actions button.is-primary:hover,
+.card.is-horizontal:hover .card-actions a.is-primary:hover {
+  background-color: #9871e5;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.card.is-horizontal:hover .card-image span.icon i {
   -webkit-transition: color 0.1s ease-in-out;
   transition: color 0.1s ease-in-out;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i.fa-twitter {
+.card.is-horizontal:hover .card-image span.icon i.fa-twitter {
   color: #1da1f2;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i.fa-youtube-play {
+.card.is-horizontal:hover .card-image span.icon i.fa-youtube-play {
   color: #ff0000;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i.fa-facebook-square {
+.card.is-horizontal:hover .card-image span.icon i.fa-facebook-square {
   color: #3b5998;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i.fa-spotify {
+.card.is-horizontal:hover .card-image span.icon i.fa-spotify {
   color: #1db954;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i.fa-soundcloud {
+.card.is-horizontal:hover .card-image span.icon i.fa-soundcloud {
   color: #ff8800;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i.fa-instagram {
+.card.is-horizontal:hover .card-image span.icon i.fa-instagram {
   color: #c13584;
 }
 
-.card.is-horizontal.is-social:hover .card-image span.icon i.fa-snapchat-ghost {
+.card.is-horizontal:hover .card-image span.icon i.fa-snapchat-ghost {
   color: #fffc00;
 }
 
@@ -20072,5 +20112,9 @@ nav.navbar.navbar-profile {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.button.is-hoverable {
+  background-color: #ccc;
 }
 

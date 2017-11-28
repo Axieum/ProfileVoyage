@@ -30,22 +30,27 @@ class SocialController extends Controller
     public function index()
     {
         $socials = Auth::user()->socials;
-        return view('link.index')->withSocials($socials);
+        $platforms = SocialPlatform::all();
+        return view('link.index')->withSocials($socials)->withPlatforms($platforms);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function request($platform)
+    public function request(Request $request)
     {
         // Check if the platform is supported - database query.
-        if (!SocialPlatform::where('name', $platform)->exists())
-            abort(404, 'Unsupported platform! (' . $platform . ')');
+        if (!SocialPlatform::where('name', $request->platform)->exists())
+        {
+            LaraFlash::danger('Unsupported platform! (' . $request->platform . ')');
+            return redirect()->back();
+        }
 
         // Send the OAuth request for the desired platform.
-        return Socialite::with($platform)->redirect();
+        return Socialite::with($request->platform)->redirect();
     }
 
     /**
@@ -73,7 +78,7 @@ class SocialController extends Controller
         switch ($platformObject->name)
         {
             case 'twitter':
-                $socialValue = $entity['user_id'];
+                $socialValue = '@' . $entity['screen_name'];
                 break;
             default:
                 $socialValue = isset($entity['user_id']) ? $entity['user_id'] : null;
@@ -111,6 +116,9 @@ class SocialController extends Controller
         if (is_null($social))
             abort(404, 'A social link with the id ' . $id . " couldn't be found.");
 
+        if ($social->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to delete that profile!');
+
         if ($social->delete())
         {
             LaraFlash::success('The social account (' . $social_platform . ') has been unlinked.');
@@ -120,6 +128,6 @@ class SocialController extends Controller
             LaraFlash::danger('Something prevented us from unlinking the account!');
         }
 
-        return redirect(route('index'));
+        return redirect(route('link.index'));
     }
 }

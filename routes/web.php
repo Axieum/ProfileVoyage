@@ -53,7 +53,7 @@ Route::delete('@/{profileLink?}/delete', 'ProfileController@destroy')->name('pro
 Route::prefix('/link')->group(function() {
     Route::get('/', 'SocialController@index')->name('link.index');
 
-    Route::get('/{platform}', 'SocialController@request')->name('link.request');
+    Route::post('/', 'SocialController@request')->name('link.request');
     Route::get('/{platform}/callback', 'SocialController@callback')->name('link.callback');
 });
 Route::delete('/unlink/{id}', 'SocialController@unlink')->name('unlink');

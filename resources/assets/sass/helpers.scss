@@ -135,3 +135,7 @@ $sides: (top, bottom, left, right);
 .has-rows {
     flex-direction: column;
 }
+
+.button.is-hoverable {
+    background-color: #ccc;
+}
