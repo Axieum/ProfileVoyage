@@ -84,6 +84,8 @@ class ProfileController extends Controller
         $profile->date_of_birth = $dob;
         $profile->location = $request->location;
         $profile->country = (is_null($request->country) ? null : strtoupper($request->country));
+        // To protect mass profile image downloads, generate a random 30 character long string.
+        $profile->avatar = bin2hex(openssl_random_pseudo_bytes(15));
 
         // Manipulate and save avatar.
         if (!is_null($request->avatar))
@@ -92,7 +94,7 @@ class ProfileController extends Controller
             $img->fit(512, 512, function($constraint) {
                 $constraint->upsize();
             });
-            if (is_null($img->save(public_path('avatars/' . $profile->link . '.png'))))
+            if (is_null($img->save(public_path('avatars/' . $profile->avatar . '.png'))))
             {
                 LaraFlash::danger('An error occurred saving your profile image.');
                 return redirect()->back()->withInput();
@@ -221,7 +223,8 @@ class ProfileController extends Controller
             $img->fit(512, 512, function($constraint) {
                 $constraint->upsize();
             });
-            if (is_null($img->save(public_path('avatars/' . $profile->link . '.png'))))
+
+            if (is_null($img->save(public_path('avatars/' . $profile->avatar . '.png'))))
             {
                 LaraFlash::danger('An error occurred saving your profile image.');
                 return redirect()->back()->withInput();

@@ -30,6 +30,8 @@ class CreateProfilesTable extends Migration
             $table->char('country', 2)->default(null)->nullable();
             $table->foreign('country')->references('code')->on('countries')->onDelete('set null');
 
+            $table->string('avatar', 30)->unique();
+
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
