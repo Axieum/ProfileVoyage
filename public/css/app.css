@@ -18763,7 +18763,7 @@ nav.navbar.navbar-profile {
 
 .card.is-horizontal:hover .card-actions button.is-danger:hover,
 .card.is-horizontal:hover .card-actions a.is-danger:hover {
-  background-color: #ff0537;
+  background-color: #ff1f4b;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
@@ -18777,7 +18777,7 @@ nav.navbar.navbar-profile {
 
 .card.is-horizontal:hover .card-actions button.is-primary:hover,
 .card.is-horizontal:hover .card-actions a.is-primary:hover {
-  background-color: #9871e5;
+  background-color: #a786e9;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }

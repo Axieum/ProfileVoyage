@@ -366,7 +366,7 @@ nav.navbar.navbar-profile {
             background-color: $danger;
             transition: all 0.2s ease-in-out;
             &:hover {
-                background-color: darken($danger, 10%);
+                background-color: darken($danger, 5%);
                 transition: all 0.1s ease-in-out;
             }
         }
@@ -374,7 +374,7 @@ nav.navbar.navbar-profile {
             background-color: $primary;
             transition: all 0.2s ease-in-out;
             &:hover {
-                background-color: darken($primary, 10%);
+                background-color: darken($primary, 5%);
                 transition: all 0.1s ease-in-out;
             }
         }

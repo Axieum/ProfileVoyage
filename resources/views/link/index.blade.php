@@ -4,27 +4,38 @@
 @section('subtitle', 'Add or remove your social accounts')
 
 @section('content')
-    <div class="columns is-multiline">
+    <div id="wrapper" class="columns is-multiline">
         @foreach ($socials as $social)
             <div class="column is-6 is-offset-3">
                 <div class="card is-horizontal is-rounded">
                     <div class="card-image">
                         <figure class="image is-64x64 has-content-centered">
-                            <span class="icon is-large-desktop is-medium-touch"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
+                            <b-tooltip label="{{ $social->platform->display_name }}" position="is-top" type="is-primary" animated>
+                                <span class="icon is-large-desktop is-medium-touch"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
+                            </b-tooltip>
                         </figure>
                     </div>
                     <div class="card-content">
                         <a href="{{ $social->url }}" class="title has-text-weight-normal is-size-4-desktop is-size-6-touch">{{ $social->value }}</a>
                     </div>
-                    <div class="card-actions level">
+                    <div class="card-actions level is-mobile">
                         <div class="level-item">
-                            <a href="#profiles" class="button is-primary is-small-touch is-hoverable">View Profiles</a>
+                            <b-tooltip label="View Profiles" position="is-top" type="is-primary" animated>
+                                <a href="#profiles" class="button is-primary is-small-touch is-hoverable">
+                                    <span class="icon is-small"><i class="fa fa-eye"></i></span>
+                                </a>
+                            </b-tooltip>
                         </div>
                         <div class="level-item">
-                            <form action="{{ route('unlink', $social->id) }}" method="post">
+                            <form action="{{ route('unlink', $social->id) }}" method="post" data-for="{{ $social->platform->display_name }}">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button type="submit" class="button is-danger is-small-touch is-hoverable">Unlink</a></form>
+                                <b-tooltip label="Unlink" position="is-top" type="is-danger" animated>
+                                    <button v-on:click.prevent.stop="confirmUnlink(this.event)" type="submit" class="button is-danger is-small-touch is-hoverable">
+                                        <span class="icon is-small"><i class="fa fa-chain-broken"></i></span>
+                                    </button>
+                                </b-tooltip>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -58,4 +69,26 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var app = new Vue({
+            el: '#wrapper',
+            methods: {
+                confirmUnlink: function(ele) {
+                    this.$dialog.confirm({
+                        title: 'Unlinking Account',
+                        message: 'Are you sure you want to <b>unlink</b> this ' + $(ele.target).closest('form').attr('data-for') + ' account?',
+                        confirmText: 'Unlink',
+                        type: 'is-danger',
+                        hasIcon: true,
+                        onConfirm: () => {
+                            $(ele.target).closest('form').submit();
+                        }
+                    });
+                }
+            }
+        });
+    </script>
 @endsection
