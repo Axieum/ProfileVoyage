@@ -150,7 +150,94 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $profileLink)
     {
-        //
+        $profile = Profile::where('link', $profileLink)->first();
+
+        // Does the profile exist?
+        if (is_null($profile))
+            abort(404, 'A profile with that link couldn\'t be found! (' . $profileLink . ')');
+
+        // Does the currently authenticated user have access to this profile?
+        if ($profile->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to edit this profile!');
+
+        // Only validate unique entries should they have changed (prevents duplicate entry)
+        if ($request->name != $profile->name)
+        {
+            $this->validateWith([
+                'name' => ['required', 'string', 'min:1', 'max:16', 'alpha_dash', Rule::unique('profiles')->where(function ($query) {
+                    return $query->where('user_id', Auth::user()->id);
+                })]
+            ]);
+            $profile->name = $request->name;
+        }
+
+        if ($request->link != $profile->link)
+        {
+            $this->validateWith([
+                'link' => 'required|string|min:3|max:32|alpha_dash|unique:profiles'
+            ]);
+            $profile->link = strtolower($request->link);
+        }
+
+        // These can be mass validated
+        $this->validateWith([
+            'displayName' => 'required|string|min:2|max:50',
+            'motto' => 'sometimes|nullable|string|min:1|max:100',
+            'dob_day' => 'required_with:dob_month,dob_year|integer|between:1,31',
+            'dob_month' => 'required_with:dob_day,dob_year|integer|between:1,12',
+            'dob_year' => 'required_with:dob_day,dob_month|integer|between:' . (date('Y') - 128) . ',' . date('Y'),
+            'country' => 'sometimes|string|size:2|exists:countries,code',
+            'location' => ['sometimes', 'nullable', 'string', 'max:32', new AlphaSpace],
+            'avatar' => 'sometimes|nullable|file|mimes:jpeg,png,jpg'
+        ]);
+
+        // Date of birth workaround to support name in dropdown.
+        $dob = null;
+        if (isset($request->dob_day) && isset($request->dob_month) && isset($request->dob_year))
+        {
+            // Parse the supplied day/month/year into a suitable date string ready for database.
+            $dob = date('Y-m-j', strtotime($request->dob_day . '-' . $request->dob_month . '-' . $request->dob_year));
+        }
+
+        if ($request->displayName != $profile->display_name)
+            $profile->display_name = $request->displayName;
+
+        if ($request->motto != $profile->motto)
+            $profile->motto = $request->motto;
+
+        if ($dob != $profile->date_of_birth)
+            $profile->date_of_birth = $dob;
+
+        if ($request->location != $profile->location)
+            $profile->location = $request->location;
+
+        if ((is_null($request->country) ? null : strtoupper($request->country)) != $profile->country)
+            $profile->country = (is_null($request->country) ? null : strtoupper($request->country));
+
+        // Manipulate and save avatar.
+        if (!is_null($request->avatar))
+        {
+            $img = Image::make($request->file('avatar'));
+            $img->fit(512, 512, function($constraint) {
+                $constraint->upsize();
+            });
+            if (is_null($img->save(public_path('avatars/' . $profile->link . '.png'))))
+            {
+                LaraFlash::danger('An error occurred saving your profile image.');
+                return redirect()->back()->withInput();
+            }
+        }
+
+        if ($profile->save())
+        {
+            LaraFlash::success('Successfully updated your profile! (' . $profile->name . ')');
+            return redirect(route('profile.show', $profile->link));
+        }
+        else
+        {
+            LaraFlash::danger('An error occurred while updating your profile.');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
