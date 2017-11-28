@@ -351,8 +351,7 @@ nav.navbar.navbar-profile {
     }
     & .card-actions {
         float: right;
-        margin-right: 1rem;
-        padding-left: 1rem;
+        padding: 1rem;
         border-left: 1px solid rgba($grey-dark, 0.3);
 
         & .level-item:not(:nth-child(1)) {

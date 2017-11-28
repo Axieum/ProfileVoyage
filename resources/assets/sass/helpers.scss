@@ -65,6 +65,13 @@ $sides: (top, bottom, left, right);
         height: 256px!important;
         width: 256px!important;
     }
+    .icon.is-large-desktop {
+        height: 3rem;
+        width: 3rem;
+        & .fa {
+            font-size: 42px;
+        }
+    }
 }
 
 @include touch {
@@ -81,6 +88,17 @@ $sides: (top, bottom, left, right);
     figure.image.is-192x192-touch {
         height: 192px;
         width: 192px;
+    }
+    .icon.is-medium-touch {
+        height: 2rem;
+        width: 2rem;
+        & .fa {
+            font-size: 28px;
+        }
+    }
+    .button.is-small-touch {
+        border-radius: 2px;
+        font-size: 0.75rem;
     }
 }
 

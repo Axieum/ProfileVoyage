@@ -18741,8 +18741,7 @@ nav.navbar.navbar-profile {
 
 .card.is-horizontal .card-actions {
   float: right;
-  margin-right: 1rem;
-  padding-left: 1rem;
+  padding: 1rem;
   border-left: 1px solid rgba(74, 74, 74, 0.3);
 }
 
@@ -20023,6 +20022,16 @@ nav.navbar.navbar-profile {
     height: 256px !important;
     width: 256px !important;
   }
+
+  .icon.is-large-desktop {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .icon.is-large-desktop .fa,
+  .icon.is-large-desktop .mdi {
+    font-size: 42px;
+  }
 }
 
 @media screen and (max-width: 1023px) {
@@ -20042,6 +20051,21 @@ nav.navbar.navbar-profile {
   figure.image.is-192x192-touch {
     height: 192px;
     width: 192px;
+  }
+
+  .icon.is-medium-touch {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .icon.is-medium-touch .fa,
+  .icon.is-medium-touch .mdi {
+    font-size: 28px;
+  }
+
+  .button.is-small-touch {
+    border-radius: 2px;
+    font-size: 0.75rem;
   }
 }
 

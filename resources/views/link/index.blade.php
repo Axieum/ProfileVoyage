@@ -10,27 +10,27 @@
                 <div class="card is-horizontal is-rounded">
                     <div class="card-image">
                         <figure class="image is-64x64 has-content-centered">
-                            <span class="icon is-large"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
+                            <span class="icon is-large-desktop is-medium-touch"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
                         </figure>
                     </div>
                     <div class="card-content">
-                        <a href="{{ $social->url }}" class="title is-size-4-desktop is-size-5-touch">{{ $social->value }}</a>
+                        <a href="{{ $social->url }}" class="title has-text-weight-normal is-size-4-desktop is-size-6-touch">{{ $social->value }}</a>
                     </div>
                     <div class="card-actions level">
                         <div class="level-item">
-                            <a href="#profiles" class="button is-primary is-hoverable">View Profiles</a>
+                            <a href="#profiles" class="button is-primary is-small-touch is-hoverable">View Profiles</a>
                         </div>
                         <div class="level-item">
                             <form action="{{ route('unlink', $social->id) }}" method="post">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button type="submit" class="button is-danger is-hoverable">Unlink</a></form>
+                                <button type="submit" class="button is-danger is-small-touch is-hoverable">Unlink</a></form>
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
-        <div class="column is-6 is-offset-3">
+        <div class="column is-6 is-offset-3 m-b-15">
             @if (sizeof($socials) > 0)
                 <hr>
             @endif
