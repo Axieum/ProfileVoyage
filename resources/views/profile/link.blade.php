@@ -24,7 +24,7 @@
 
                 <div class="level is-mobile is-marginless">
                     <div class="level-left">
-                        <h3 class="title is-4">Editing: <span class="has-text-weight-normal">{{ $profile->name }}</span></h3>
+                        <h3 class="title is-4">Editing: <a href="{{ route('profile.show', $profile->link) }}" class="has-text-weight-normal">{{ $profile->name }}</a></h3>
                     </div>
                 </div>
                 <hr style="margin-top: 0.5rem;">
