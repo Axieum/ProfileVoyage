@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\Social;
 use App\Rules\AlphaSpace;
 use Auth;
 use Illuminate\Http\Request;
@@ -117,7 +118,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Profile  $profile
+     * @param  int  $profileLink
      * @return \Illuminate\Http\Response
      */
     public function show($profileLink)
@@ -133,7 +134,7 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Profile  $profile
+     * @param  int  $profileLink
      * @return \Illuminate\Http\Response
      */
     public function edit($profileLink)
@@ -145,10 +146,104 @@ class ProfileController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $profileLink
+     * @return \Illuminate\Http\Response
+     */
+    public function editLinks($profileLink)
+    {
+        $profile = Profile::where('link', $profileLink)->first();
+        if (is_null($profile))
+            abort(404, 'Unfortunately, there is nothing here.');
+        $socials = Auth::user()->socials()->select('*', 'socials.id as id')->join('social_platforms', 'social_platforms.id', '=', 'socials.platform_id')->orderBy('social_platforms.display_name')->get();
+        return view('profile.link')->withProfile($profile)->withSocials($socials);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Profile  $profile
+     * @param  int $profileLink
+     * @param int $socialId
+     * @return \Illuminate\Http\Response
+     */
+    public function unlink(Request $request, $profileLink, $socialId)
+    {
+        $profile = Profile::where('link', $profileLink)->first();
+        $social = Social::where('id', $socialId)->first();
+
+        if (is_null($profile))
+            abort(404, 'A profile with that link could not be found!');
+
+        if (is_null($social))
+            abort(404, 'That social account could not be found!');
+
+        if ($profile->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to edit this profile!');
+
+        if ($social->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to that social account!');
+
+        $socialPlatform = $social->platform->display_name;
+
+        if ($profile->socials()->detach($social))
+        {
+            LaraFlash::success('Successfully removed a ' . $socialPlatform . ' accout from this profile!');
+            return redirect(route('profile.links', $profile->link));
+        }
+        else
+        {
+            LaraFlash::danger('Unable to remove that social account from this profile! Try again later.');
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $profileLink
+     * @return \Illuminate\Http\Response
+     */
+    public function link(Request $request, $profileLink)
+    {
+        $profile = Profile::where('link', $profileLink)->first();
+
+        if (is_null($profile))
+            abort(404, 'A profile with that link could not be found!');
+
+        $this->validateWith([
+            'social_id' => 'required|integer'
+        ]);
+        $social = Social::where('id', $request->social_id)->first();
+
+        if (is_null($social))
+            abort(404, 'That social account could not be found!');
+
+        if ($profile->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to edit this profile!');
+
+        if ($social->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to that social account!');
+
+        if ($profile->socials()->attach($social))
+        {
+            LaraFlash::success('Successfully added a new social accout to this profile!');
+            return redirect(route('profile.links', $profile->link));
+        }
+        else
+        {
+            LaraFlash::danger('Unable to add that social account to this profile! Try again later.');
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $profileLink
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $profileLink)

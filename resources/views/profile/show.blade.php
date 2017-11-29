@@ -36,22 +36,22 @@
     <p class="profile-divider"></p>
     <div class="profile-links">
         <div class="columns is-mobile is-multiline has-content-hcentered">
-            <!-- Link Template -->
-            <div class="column is-4-desktop is-6-tablet is-12-mobile">
-                <a href="#twitter">
-                    <div class="card is-social is-horizontal is-rounded">
-                        <div class="card-image">
-                            <figure class="image is-64x64 has-content-centered">
-                                <span class="icon is-large"><i class="fa fa-twitter"></i></span>
-                            </figure>
+            @foreach ($profile->socials as $social)
+                <div class="column is-4-desktop is-6-tablet is-12-mobile">
+                    <a href="{{ $social->url }}">
+                        <div class="card is-social is-horizontal is-rounded">
+                            <div class="card-image">
+                                <figure class="image is-64x64 has-content-centered">
+                                    <span class="icon is-large"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-size-4-desktop is-size-5-touch">{{ $social->value }}</p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <p class="title is-size-4-desktop is-size-5-touch">@yberiner</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- End Link Template -->
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

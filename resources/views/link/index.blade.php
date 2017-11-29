@@ -20,8 +20,8 @@
                     </div>
                     <div class="card-actions level is-mobile">
                         <div class="level-item">
-                            <b-tooltip label="View Profiles" position="is-top" type="is-primary" animated>
-                                <a href="#profiles" class="button is-primary is-small-touch is-hoverable">
+                            <b-tooltip label="View Profiles ({{ sizeof($social->profiles) }})" position="is-top" type="is-primary" animated>
+                                <a href="{{ route('link.show', $social->id) }}" class="button is-primary is-small-touch is-hoverable">
                                     <span class="icon is-small"><i class="fa fa-eye"></i></span>
                                 </a>
                             </b-tooltip>

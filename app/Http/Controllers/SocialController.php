@@ -29,9 +29,30 @@ class SocialController extends Controller
      */
     public function index()
     {
-        $socials = Auth::user()->socials;
-        $platforms = SocialPlatform::all();
+        $socials = Auth::user()->socials()->select('*', 'socials.id as id')->join('social_platforms', 'social_platforms.id', '=', 'socials.platform_id')->orderBy('social_platforms.display_name')->get();
+        $platforms = SocialPlatform::all()->sortBy('display_name');
         return view('link.index')->withSocials($socials)->withPlatforms($platforms);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Profile  $profile
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $social = Social::where('id', $id)->first();
+
+        if (is_null($social))
+            abort(404, 'Unfortunately, there is nothing here.');
+
+        if ($social->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to do that.');
+
+        $profiles = $social->profiles;
+
+        return view('link.show')->withSocial($social)->withProfiles($profiles);
     }
 
     /**

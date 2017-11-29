@@ -45,7 +45,13 @@ Route::get('/profiles', 'ProfileController@index')->name('profile.index');
 Route::get('/create', 'ProfileController@create')->name('profile.create');
 Route::put('/create', 'ProfileController@store')->name('profile.store');
 Route::get('/@{profileLink?}', 'ProfileController@show')->name('profile.show');
-Route::get('/@{profileLink?}/edit', 'ProfileController@edit')->name('profile.edit');
+Route::get('/@{profileLink?}/edit', 'ProfileController@edit');
+Route::get('/@{profileLink?}/edit/general', 'ProfileController@edit')->name('profile.edit');
+Route::get('/@{profileLink?}/edit/links', 'ProfileController@editLinks')->name('profile.links');
+
+Route::post('/@{profileLink?}/edit/links/add', 'ProfileController@link')->name('profile.links.add');
+Route::delete('/@{profileLink?}/edit/links/remove/{id}', 'ProfileController@unlink')->name('profile.links.remove');
+
 Route::put('/@{profileLink?}/edit', 'ProfileController@update')->name('profile.update');
 Route::delete('/@{profileLink?}/delete', 'ProfileController@destroy')->name('profile.delete');
 
@@ -55,5 +61,7 @@ Route::prefix('/link')->group(function() {
 
     Route::post('/', 'SocialController@request')->name('link.request');
     Route::get('/{platform}/callback', 'SocialController@callback')->name('link.callback');
+
+    Route::get('/{id?}', 'SocialController@show')->name('link.show');
 });
 Route::delete('/unlink/{id}', 'SocialController@unlink')->name('unlink');

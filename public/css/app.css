@@ -18695,6 +18695,10 @@ nav.navbar.navbar-profile {
   opacity: 0;
 }
 
+.card.is-social.is-horizontal .card-content {
+  width: unset;
+}
+
 .card.is-social.fadeInUp {
   -webkit-animation-name: fadeInUp;
           animation-name: fadeInUp;
@@ -18778,6 +18782,20 @@ nav.navbar.navbar-profile {
 .card.is-horizontal:hover .card-actions button.is-primary:hover,
 .card.is-horizontal:hover .card-actions a.is-primary:hover {
   background-color: #a786e9;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.card.is-horizontal:hover .card-actions button.is-success,
+.card.is-horizontal:hover .card-actions a.is-success {
+  background-color: #23d160;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.card.is-horizontal:hover .card-actions button.is-success:hover,
+.card.is-horizontal:hover .card-actions a.is-success:hover {
+  background-color: #20bc56;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }

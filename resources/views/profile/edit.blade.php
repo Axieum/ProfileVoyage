@@ -3,6 +3,19 @@
 @section('title', "Profile Editing")
 @section('subtitle', 'Make changes to an existing profile')
 
+@section('hero-footer')
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container is-fullwidth p-l-15 p-r-15">
+                <ul>
+                    <li class="is-active"><a><span class="icon is-small"><i class="fa fa-id-card"></i></span>General</a></li>
+                    <li><a href="{{ route('profile.links', $profile->link) }}"><span class="icon is-small"><i class="fa fa-external-link-square"></i></span>Social Links</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+@endsection
+
 @section('content')
     <div class="form-wrapper container" v-cloak>
         <div class="columns">

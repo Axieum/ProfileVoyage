@@ -323,6 +323,9 @@ nav.navbar.navbar-profile {
 
 .card.is-social {
     opacity: 0;
+    &.is-horizontal .card-content {
+        width: unset;
+    }
 }
 .card.is-social.fadeInUp {
     animation-name: fadeInUp;
@@ -375,6 +378,14 @@ nav.navbar.navbar-profile {
             transition: all 0.2s ease-in-out;
             &:hover {
                 background-color: darken($primary, 5%);
+                transition: all 0.1s ease-in-out;
+            }
+        }
+        &.is-success {
+            background-color: $success;
+            transition: all 0.2s ease-in-out;
+            &:hover {
+                background-color: darken($success, 5%);
                 transition: all 0.1s ease-in-out;
             }
         }
