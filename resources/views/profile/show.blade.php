@@ -5,7 +5,7 @@
 @section('content')
     <div class="profile-image has-content-hcentered">
         <figure class="image is-256x256-desktop is-192x192-touch">
-            <img class="is-circle has-border" src="{{ file_exists('avatars\\' . $profile->avatar . '.png') ? 'avatars\\' . $profile->avatar . '.png' : 'img\\_profile.png' }}" alt="{{ $profile->display_name }}'s Profile Picture">
+            <img class="is-circle has-border" src="{{ url(file_exists('avatars\\' . $profile->avatar . '.png') ? 'avatars/' . $profile->avatar . '.png' : 'img/_profile.png') }}" alt="{{ $profile->display_name }}'s Profile Picture">
         </figure>
     </div>
     <div class="profile-info container has-text-centered m-t-15">
