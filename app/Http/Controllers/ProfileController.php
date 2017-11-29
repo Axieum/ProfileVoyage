@@ -352,6 +352,9 @@ class ProfileController extends Controller
         if (is_null($profile))
             abort(404, 'A profile with the link ' . $profileLink . " couldn't be found.");
 
+        if ($profile->user_id != Auth::user()->id)
+            abort(403, 'You do not have permission to delete that profile!');
+
         if ($profile->delete())
         {
             LaraFlash::success('The profile (' . $profileLink . ') has been destroyed.');
