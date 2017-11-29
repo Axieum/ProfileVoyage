@@ -30,7 +30,7 @@
                 <hr style="margin-top: 0.5rem;">
 
                 @if(sizeof($profile->socials) > 0)
-                    <h3 class="title is-size-5-desktop is-size-6-touch is-marginless">Linked:</h3>
+                    <h3 class="title is-size-5-desktop is-size-6-touch is-marginless">Showing:</h3>
                 @endif
 
                 @foreach ($profile->socials as $social)
@@ -66,7 +66,7 @@
                     <hr>
                 @endif
                 @if (sizeof($profile->socials) != sizeof($socials))
-                    <h3 class="title is-size-5-desktop is-size-6-touch is-marginless">Unlinked:</h3>
+                    <h3 class="title is-size-5-desktop is-size-6-touch is-marginless">Hidden:</h3>
                 @endif
                 @foreach ($socials as $social)
                     {{-- Only print the linked profiles here --}}
@@ -100,6 +100,8 @@
                         </div>
                     @endif
                 @endforeach
+                <hr>
+                <p class="is-size-5 has-text-weight-light has-text-centered">Need to <b class="has-text-weight-normal">link</b> a new <a href="{{ route('link.index') }}" class="has-text-weight-normal">social media</a> account?</p>
             </div>
         </div>
     </div>
@@ -115,7 +117,7 @@
                         title: 'Remove Reference',
                         message: 'Are you sure you want to <i>remove</i> this <b>' + $(ele.target).closest('form').attr('data-for') + '</b> account from this <b>{{ $profile->name }}</b> profile?',
                         confirmText: 'Remove',
-                        type: 'is-danger',
+                        type: 'is-warning',
                         hasIcon: true,
                         onConfirm: () => {
                             $(ele.target).closest('form').submit();
