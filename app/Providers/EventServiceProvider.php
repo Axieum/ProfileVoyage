@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserUpdated' => [
             'App\Listeners\SendVerityEmail'
         ],
+        'App\Events\ProfileDeleted' => [
+            'App\Listeners\DeleteAvatar'
+        ],
         'SocialiteProviders\Manager\SocialiteWasCalled' => [
             'SocialiteProviders\Twitter\TwitterExtendSocialite@handle',
             'SocialiteProviders\YouTube\YouTubeExtendSocialite@handle'

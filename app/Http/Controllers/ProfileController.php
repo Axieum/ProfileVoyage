@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use App\Social;
+use App\Events\ProfileDeleted;
 use App\Rules\AlphaSpace;
 use Auth;
 use Illuminate\Http\Request;
@@ -96,7 +97,7 @@ class ProfileController extends Controller
             $img->fit(512, 512, function($constraint) {
                 $constraint->upsize();
             });
-            if (is_null($img->save(public_path('avatars/' . $profile->avatar . '.png'))))
+            if (is_null($img->save(storage_path('app/public/avatars/' . $profile->avatar . '.png'))))
             {
                 LaraFlash::danger('An error occurred saving your profile image.');
                 return redirect()->back()->withInput();
@@ -320,7 +321,7 @@ class ProfileController extends Controller
                 $constraint->upsize();
             });
 
-            if (is_null($img->save(public_path('avatars/' . $profile->avatar . '.png'))))
+            if (is_null($img->save(storage_path('app/public/avatars/' . $profile->avatar . '.png'))))
             {
                 LaraFlash::danger('An error occurred saving your profile image.');
                 return redirect()->back()->withInput();
@@ -355,8 +356,10 @@ class ProfileController extends Controller
         if ($profile->user_id != Auth::user()->id)
             abort(403, 'You do not have permission to delete that profile!');
 
+        $avatar = $profile->avatar;
         if ($profile->delete())
         {
+            event(new ProfileDeleted($avatar));
             LaraFlash::success('The profile (' . $profileLink . ') has been destroyed.');
         }
         else
@@ -364,7 +367,7 @@ class ProfileController extends Controller
             LaraFlash::danger('Something prevented us from destroying the profile!');
         }
 
-        return redirect(route('index'));
+        return redirect(route('profile.index'));
     }
 
     /**
