@@ -419,34 +419,6 @@ nav.navbar.navbar-profile {
     }
 }
 
-#cog span {
-    &:first-child {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 0;
-        padding-right: 4px;
-        opacity: 0;
-        text-align: right;
-        transition: all 0.3s ease-in-out;
-    }
-    &:nth-child(2) {
-        transition: rotate(0deg);
-        transition: transform 0.3s ease-in-out;
-    }
-}
-#cog:hover span {
-    &:nth-child(2) {
-        transform: rotate(90deg);
-        transition: transform 0.3s ease-in-out;
-    }
-    &:first-child {
-        transition: all 0.3s ease-in-out;
-        right: 32px;
-        opacity: 1;
-    }
-}
-
 .file-name {
     background-color: white;
 }

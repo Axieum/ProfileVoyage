@@ -18833,44 +18833,6 @@ nav.navbar.navbar-profile {
   color: #fffc00;
 }
 
-#cog span:first-child {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  right: 0;
-  padding-right: 4px;
-  opacity: 0;
-  text-align: right;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-#cog span:nth-child(2) {
-  -webkit-transition: rotate(0deg);
-  transition: rotate(0deg);
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-}
-
-#cog:hover span:nth-child(2) {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-}
-
-#cog:hover span:first-child {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  right: 32px;
-  opacity: 1;
-}
-
 .file-name {
   background-color: white;
 }

@@ -22,8 +22,11 @@
                 </div>
                 @if (!Auth::guest() && Auth::user()->id === $profile->user_id)
                     <div class="navbar-end is-mobile has-content-vcentered">
-                        <a id="cog" class="white-text" href="{{ route('profile.edit', $profile->link) }}">
-                            <span>Edit Profile</span><span class="icon is-medium"><i class="fa fa-cog"></i></span>
+                        <a class="white-text m-r-10" href="{{ route('profile.links', $profile->link) }}">
+                            <span class="icon is-medium"><i class="fa fa-chain"></i></span>
+                        </a>
+                        <a class="white-text" href="{{ route('profile.edit', $profile->link) }}">
+                            <span class="icon is-medium"><i class="fa fa-cog"></i></span>
                         </a>
                     </div>
                 @endif
