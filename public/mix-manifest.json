@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/profile.css": "/css/profile.css",
-    "/css/mdi.css": "/css/mdi.css"
+    "/css/mdi.css": "/css/mdi.css",
+    "/js/profile.js": "/js/profile.js"
 }

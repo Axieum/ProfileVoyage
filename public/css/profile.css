@@ -15691,10 +15691,12 @@ nav.navbar.navbar-profile {
   transition: all 0.2s ease-in-out;
 }
 
-.card.is-social:hover p {
-  border-bottom: 2px dotted #B79CED;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+@media screen and (min-width: 1024px) {
+  .card.is-social:hover p {
+    border-bottom: 2px dotted #B79CED;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
 }
 
 .profile-links .column {
@@ -15722,34 +15724,14 @@ nav.navbar.navbar-profile {
   }
 }
 
-.card.is-social {
+#profile-links {
   opacity: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 .card.is-social.is-horizontal .card-content {
   width: unset;
-}
-
-.card.is-social.fadeInUp {
-  -webkit-animation-name: fadeInUp;
-          animation-name: fadeInUp;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-}
-
-@keyframes fadeInUp {
-  0% {
-    -webkit-transform: translate3d(0, 100%, 0);
-            transform: translate3d(0, 100%, 0);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
 }
 
 .card.is-horizontal {
@@ -15994,6 +15976,179 @@ nav.navbar.navbar-profile {
 .card.is-horizontal:hover .card-image span.icon i.mdi-image,
 .card.is-horizontal:hover .card-image span.icon i.fa-image {
   color: #0099e5;
+}
+
+@media screen and (max-width: 1023px) {
+  .column.is--active .card.is-social p {
+    border-bottom: 2px dotted #B79CED;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .column.is--active .card.is-social span.icon i {
+    -webkit-transition: color 0.1s ease-in-out;
+    transition: color 0.1s ease-in-out;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-twitter,
+  .column.is--active .card.is-social span.icon i.fa-twitter {
+    color: #1da1f2;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-youtube-play,
+  .column.is--active .card.is-social span.icon i.fa-youtube-play {
+    color: #ff0000;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-facebook-box,
+  .column.is--active .card.is-social span.icon i.fa-facebook-box {
+    color: #3b5998;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-spotify,
+  .column.is--active .card.is-social span.icon i.fa-spotify {
+    color: #1db954;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-soundcloud,
+  .column.is--active .card.is-social span.icon i.fa-soundcloud {
+    color: #ff8800;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-instagram,
+  .column.is--active .card.is-social span.icon i.fa-instagram {
+    color: #c13584;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-snapchat,
+  .column.is--active .card.is-social span.icon i.fa-snapchat {
+    color: #fffc00;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-gamepad-variant,
+  .column.is--active .card.is-social span.icon i.fa-gamepad-variant {
+    color: #00afe1;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-vimeo,
+  .column.is--active .card.is-social span.icon i.fa-vimeo {
+    color: #1ab7ea;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-discord,
+  .column.is--active .card.is-social span.icon i.fa-discord {
+    color: #7289da;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-reddit,
+  .column.is--active .card.is-social span.icon i.fa-reddit {
+    color: #ff4500;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-google-plus,
+  .column.is--active .card.is-social span.icon i.fa-google-plus {
+    color: #dd4b39;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-image-filter-center-focus,
+  .column.is--active .card.is-social span.icon i.fa-image-filter-center-focus {
+    color: #85bf25;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-linkedin-box,
+  .column.is--active .card.is-social span.icon i.fa-linkedin-box {
+    color: #0077b5;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-xbox,
+  .column.is--active .card.is-social span.icon i.fa-xbox {
+    color: #52b043;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-steam,
+  .column.is--active .card.is-social span.icon i.fa-steam {
+    color: #000000;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-twitch,
+  .column.is--active .card.is-social span.icon i.fa-twitch {
+    color: #6441a5;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-dribbble-box,
+  .column.is--active .card.is-social span.icon i.fa-dribbble-box {
+    color: #ea4c89;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-deviantart,
+  .column.is--active .card.is-social span.icon i.fa-deviantart {
+    color: #05cc47;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-tumblr,
+  .column.is--active .card.is-social span.icon i.fa-tumblr {
+    color: #35465c;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-flickr,
+  .column.is--active .card.is-social span.icon i.fa-flickr {
+    color: #ff0084;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-medium,
+  .column.is--active .card.is-social span.icon i.fa-medium {
+    color: #00ab6c;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-mixer,
+  .column.is--active .card.is-social span.icon i.fa-mixer {
+    color: #00bce4;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-flickr,
+  .column.is--active .card.is-social span.icon i.fa-flickr {
+    color: #ff0084;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-camera,
+  .column.is--active .card.is-social span.icon i.fa-camera {
+    color: #000000;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-etsy,
+  .column.is--active .card.is-social span.icon i.fa-etsy {
+    color: #d5641c;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-weather-sunny,
+  .column.is--active .card.is-social span.icon i.fa-weather-sunny {
+    color: #00aaff;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-wallet,
+  .column.is--active .card.is-social span.icon i.fa-wallet {
+    color: #f96854;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-soundcloud,
+  .column.is--active .card.is-social span.icon i.fa-soundcloud {
+    color: #ff8800;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-spotify,
+  .column.is--active .card.is-social span.icon i.fa-spotify {
+    color: #1db954;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-stackexchange,
+  .column.is--active .card.is-social span.icon i.fa-stackexchange {
+    color: #f48024;
+  }
+
+  .column.is--active .card.is-social span.icon i.mdi-image,
+  .column.is--active .card.is-social span.icon i.fa-image {
+    color: #0099e5;
+  }
 }
 
 .file-name {

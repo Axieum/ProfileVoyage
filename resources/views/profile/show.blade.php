@@ -34,10 +34,10 @@
         @endif
     </div>
     <p class="profile-divider"></p>
-    <div class="profile-links">
+    <div id="profile-links" class="profile-links">
         <div class="columns is-mobile is-multiline has-content-hcentered">
             @foreach ($profile->socials()->select('*', 'socials.id as id')->join('social_platforms', 'social_platforms.id', '=', 'socials.platform_id')->orderBy('social_platforms.display_name')->get() as $social)
-                <div class="column is-4-desktop is-6-tablet is-12-mobile">
+                <div class="column social-wrapper is-4-desktop is-6-tablet is-12-mobile">
                     <a href="{{ $social->url }}">
                         <div class="card is-social is-horizontal is-rounded">
                             <div class="card-image">
@@ -54,32 +54,4 @@
             @endforeach
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            setTimeout(function() {
-                $('.profile-image img').css('opacity', 1);
-            }, 0);
-            setTimeout(function() {
-                $('.profile-info').css('opacity', 1);
-            }, 250);
-            setTimeout(function() {
-                $('.profile-divider').css('width', '60%');
-            }, 500);
-            setTimeout(function() {
-                $('nav.navbar').css('top', 0).css('opacity', 1);
-            }, 750);
-
-            var cards = $('.card.is-social');
-
-            $(cards).each(function(i) {
-                let ele = $(this);
-                setTimeout(function() {
-                    ele.addClass('fadeInUp');
-                }, 250 * i + 1000);
-            })
-        });
-    </script>
 @endsection

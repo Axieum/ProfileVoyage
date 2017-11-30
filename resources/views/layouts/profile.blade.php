@@ -39,8 +39,7 @@
             </div>
         </main>
 
-        <script src="{{ asset('js/app.js') }}"></script>
-        @include('partials._flash')
+        <script src="{{ asset('js/profile.js') }}"></script>
         @yield('scripts')
     </body>
 </html>
