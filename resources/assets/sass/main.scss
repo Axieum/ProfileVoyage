@@ -306,18 +306,21 @@ nav.navbar.navbar-profile {
 }
 .profile-links .column {
     transition: all 0.3s ease-in-out;
+    margin-bottom: 1rem;
 
     & .card.is-social {
         transition: all 0.3s ease-in-out;
     }
 }
-.profile-links .column:hover {
-    padding: 0.25rem;
-    transition: all 0.3s ease-in-out;
-
-    & .card.is-social {
-        box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
+@include desktop {
+    .profile-links .column:hover {
+        padding: 0.25rem;
         transition: all 0.3s ease-in-out;
+
+        & .card.is-social {
+            box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
+            transition: all 0.3s ease-in-out;
+        }
     }
 }
 

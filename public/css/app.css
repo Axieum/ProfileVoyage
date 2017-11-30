@@ -18671,6 +18671,7 @@ nav.navbar.navbar-profile {
 .profile-links .column {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  margin-bottom: 1rem;
 }
 
 .profile-links .column .card.is-social {
@@ -18678,17 +18679,19 @@ nav.navbar.navbar-profile {
   transition: all 0.3s ease-in-out;
 }
 
-.profile-links .column:hover {
-  padding: 0.25rem;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
+@media screen and (min-width: 1024px) {
+  .profile-links .column:hover {
+    padding: 0.25rem;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
 
-.profile-links .column:hover .card.is-social {
-  -webkit-box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
-          box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  .profile-links .column:hover .card.is-social {
+    -webkit-box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
+            box-shadow: 0 6px 16px rgba(10, 10, 10, 0.15), 0 0 0 1px rgba(10, 10, 10, 0.15);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
 }
 
 .card.is-social {
