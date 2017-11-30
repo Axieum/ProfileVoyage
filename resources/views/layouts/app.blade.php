@@ -11,6 +11,7 @@
         <title>Profile Voyage | @yield('title')</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @yield('styles')
     </head>
     <body {{ Route::is('index') ? 'special' : '' }}>
         <nav {{ Route::is('index') ?: 'special' }}>
