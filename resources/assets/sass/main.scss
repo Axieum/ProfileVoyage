@@ -296,6 +296,9 @@ nav.navbar.navbar-profile {
     border-bottom: 1px dotted white;
     transition: width 0.3s ease-in-out;
 }
+.profile-links {
+    padding-bottom: 1rem;
+}
 .profile-links .card .card-content p {
     border-bottom: 2px dotted transparent;
     transition: all 0.2s ease-in-out;
@@ -306,7 +309,6 @@ nav.navbar.navbar-profile {
 }
 .profile-links .column {
     transition: all 0.3s ease-in-out;
-    margin-bottom: 1rem;
 
     & .card.is-social {
         transition: all 0.3s ease-in-out;
