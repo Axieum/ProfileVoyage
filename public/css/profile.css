@@ -15871,6 +15871,131 @@ nav.navbar.navbar-profile {
   color: #fffc00;
 }
 
+.card.is-horizontal:hover .card-image span.icon i.mdi-gamepad-variant,
+.card.is-horizontal:hover .card-image span.icon i.fa-gamepad-variant {
+  color: #00afe1;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-vimeo,
+.card.is-horizontal:hover .card-image span.icon i.fa-vimeo {
+  color: #1ab7ea;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-discord,
+.card.is-horizontal:hover .card-image span.icon i.fa-discord {
+  color: #7289da;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-reddit,
+.card.is-horizontal:hover .card-image span.icon i.fa-reddit {
+  color: #ff4500;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-google-plus,
+.card.is-horizontal:hover .card-image span.icon i.fa-google-plus {
+  color: #dd4b39;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-image-filter-center-focus,
+.card.is-horizontal:hover .card-image span.icon i.fa-image-filter-center-focus {
+  color: #85bf25;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-linkedin-box,
+.card.is-horizontal:hover .card-image span.icon i.fa-linkedin-box {
+  color: #0077b5;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-xbox,
+.card.is-horizontal:hover .card-image span.icon i.fa-xbox {
+  color: #52b043;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-steam,
+.card.is-horizontal:hover .card-image span.icon i.fa-steam {
+  color: #000000;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-twitch,
+.card.is-horizontal:hover .card-image span.icon i.fa-twitch {
+  color: #6441a5;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-dribbble-box,
+.card.is-horizontal:hover .card-image span.icon i.fa-dribbble-box {
+  color: #ea4c89;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-deviantart,
+.card.is-horizontal:hover .card-image span.icon i.fa-deviantart {
+  color: #05cc47;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-tumblr,
+.card.is-horizontal:hover .card-image span.icon i.fa-tumblr {
+  color: #35465c;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-flickr,
+.card.is-horizontal:hover .card-image span.icon i.fa-flickr {
+  color: #ff0084;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-medium,
+.card.is-horizontal:hover .card-image span.icon i.fa-medium {
+  color: #00ab6c;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-mixer,
+.card.is-horizontal:hover .card-image span.icon i.fa-mixer {
+  color: #00bce4;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-flickr,
+.card.is-horizontal:hover .card-image span.icon i.fa-flickr {
+  color: #ff0084;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-camera,
+.card.is-horizontal:hover .card-image span.icon i.fa-camera {
+  color: #000000;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-etsy,
+.card.is-horizontal:hover .card-image span.icon i.fa-etsy {
+  color: #d5641c;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-weather-sunny,
+.card.is-horizontal:hover .card-image span.icon i.fa-weather-sunny {
+  color: #00aaff;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-wallet,
+.card.is-horizontal:hover .card-image span.icon i.fa-wallet {
+  color: #f96854;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-soundcloud,
+.card.is-horizontal:hover .card-image span.icon i.fa-soundcloud {
+  color: #ff8800;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-spotify,
+.card.is-horizontal:hover .card-image span.icon i.fa-spotify {
+  color: #1db954;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-stackexchange,
+.card.is-horizontal:hover .card-image span.icon i.fa-stackexchange {
+  color: #f48024;
+}
+
+.card.is-horizontal:hover .card-image span.icon i.mdi-image,
+.card.is-horizontal:hover .card-image span.icon i.fa-image {
+  color: #0099e5;
+}
+
 .file-name {
   background-color: white;
 }

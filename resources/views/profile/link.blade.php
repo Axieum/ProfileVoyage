@@ -80,7 +80,7 @@
                                 <div class="card-image">
                                     <figure class="image is-64x64 has-content-centered">
                                         <b-tooltip label="{{ $social->platform->display_name }}" position="is-top" type="is-primary" animated>
-                                            <span class="icon is-large-desktop is-medium-touch"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
+                                            <span class="icon is-large-desktop is-medium-touch"><i class="mdi mdi-{{ $social->platform->icon() }}"></i></span>
                                         </b-tooltip>
                                     </figure>
                                 </div>
