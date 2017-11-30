@@ -36,7 +36,7 @@
     <p class="profile-divider"></p>
     <div class="profile-links">
         <div class="columns is-mobile is-multiline has-content-hcentered">
-            @foreach ($profile->socials as $social)
+            @foreach ($profile->socials()->select('*', 'socials.id as id')->join('social_platforms', 'social_platforms.id', '=', 'socials.platform_id')->orderBy('social_platforms.display_name')->get() as $social)
                 <div class="column is-4-desktop is-6-tablet is-12-mobile">
                     <a href="{{ $social->url }}">
                         <div class="card is-social is-horizontal is-rounded">
