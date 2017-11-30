@@ -101,7 +101,7 @@ class SocialController extends Controller
         {
             case 'twitter':
                 $socialValue = '@' . $entity->accessTokenResponseBody['screen_name'];
-                $socialUrl = 'https://twitter.com/' . $socialValue;
+                $socialUrl = 'https://twitter.com/' . $entity->accessTokenResponseBody['screen_name'];
                 break;
             case 'youtube':
                 $socialValue = $entity->user['snippet']['title'];
