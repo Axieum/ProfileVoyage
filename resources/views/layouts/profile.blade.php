@@ -10,7 +10,7 @@
 
         <title>Profile Voyage | @yield('title')</title>
 
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     </head>
     <body special>
         <nav class="navbar is-mobile navbar-profile has-transparentbackground" role="navigation" aria-label="main navigation">
@@ -23,10 +23,10 @@
                 @if (!Auth::guest() && Auth::user()->id === $profile->user_id)
                     <div class="navbar-end is-mobile has-content-vcentered">
                         <a class="white-text m-r-10" href="{{ route('profile.links', $profile->link) }}">
-                            <span class="icon is-medium"><i class="fa fa-chain"></i></span>
+                            <span class="icon is-medium"><i class="mdi mdi-link-variant"></i></span>
                         </a>
                         <a class="white-text" href="{{ route('profile.edit', $profile->link) }}">
-                            <span class="icon is-medium"><i class="fa fa-cog"></i></span>
+                            <span class="icon is-medium"><i class="mdi mdi-settings"></i></span>
                         </a>
                     </div>
                 @endif

@@ -68,7 +68,7 @@ $sides: (top, bottom, left, right);
     .icon.is-large-desktop {
         height: 3rem;
         width: 3rem;
-        & .fa {
+        & .fa, & .mdi {
             font-size: 42px;
         }
     }
@@ -92,7 +92,7 @@ $sides: (top, bottom, left, right);
     .icon.is-medium-touch {
         height: 2rem;
         width: 2rem;
-        & .fa {
+        & .fa, & .mdi {
             font-size: 28px;
         }
     }

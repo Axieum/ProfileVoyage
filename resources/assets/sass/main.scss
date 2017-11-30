@@ -283,7 +283,7 @@ nav.navbar.navbar-profile {
     transition: opacity 0.3s ease-in-out;
 }
 .profile-info > .level {
-    width: 60%;
+    max-width: 65%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -398,14 +398,14 @@ nav.navbar.navbar-profile {
     &:hover .card-image span.icon i {
         transition: color 0.1s ease-in-out;
 
-        &.fa- {
+        &.mdi-, &.fa- {
             &twitter {
                 color: #1da1f2;
             }
             &youtube-play {
                 color: #ff0000;
             }
-            &facebook-square {
+            &facebook-box {
                 color: #3b5998;
             }
             &spotify {
@@ -417,7 +417,7 @@ nav.navbar.navbar-profile {
             &instagram {
                 color: #c13584;
             }
-            &snapchat-ghost {
+            &snapchat {
                 color: #fffc00;
             }
         }

@@ -17,12 +17,12 @@
             <div class="level">
                     @if (!is_null($profile->date_of_birth))
                         <div class="level-item">
-                            <span class="icon is-small white-text"><i class="fa fa-birthday-cake"></i></span>&nbsp;<time class="time white-text" datetime="{{ $profile->date_of_birth }}">{{ date('jS \o\f F, Y', strtotime($profile->date_of_birth)) }}</time>
+                            <span class="icon white-text"><i class="mdi mdi-cake-variant"></i></span><time class="time white-text" datetime="{{ $profile->date_of_birth }}">{{ date('jS \o\f F, Y', strtotime($profile->date_of_birth)) }}</time>
                         </div>
                     @endif
                     @if (!is_null($profile->location))
                         <div class="level-item">
-                            <span class="icon is-small white-text"><i class="fa fa-map-marker"></i></span>&nbsp;<p class="white-text">{{ $profile->location }}</p>
+                            <span class="icon white-text"><i class="mdi mdi-map-marker"></i></span><p class="white-text">{{ $profile->location }}</p>
                         </div>
                     @endif
                     @if (!is_null($profile->country))
@@ -42,11 +42,11 @@
                         <div class="card is-social is-horizontal is-rounded">
                             <div class="card-image">
                                 <figure class="image is-64x64 has-content-centered">
-                                    <span class="icon is-large"><i class="fa fa-{{ $social->platform->icon() }}"></i></span>
+                                    <span class="icon is-large"><i class="mdi mdi-{{ $social->platform->icon() }}"></i></span>
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-size-4-desktop is-size-5-touch">{{ $social->value }}</p>
+                                <p class="title is-size-4-desktop is-size-5-touch has-text-weight-normal">{{ $social->value }}</p>
                             </div>
                         </div>
                     </a>
