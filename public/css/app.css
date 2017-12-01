@@ -16881,8 +16881,8 @@ nav.navbar.navbar-profile {
   color: #1db954;
 }
 
-.card.is-horizontal:hover .card-image span.icon i.mdi-stackexchange,
-.card.is-horizontal:hover .card-image span.icon i.fa-stackexchange {
+.card.is-horizontal:hover .card-image span.icon i.mdi-stackoverflow,
+.card.is-horizontal:hover .card-image span.icon i.fa-stackoverflow {
   color: #f48024;
 }
 
@@ -17053,8 +17053,8 @@ nav.navbar.navbar-profile {
     color: #1db954;
   }
 
-  .column.is--active .card.is-social span.icon i.mdi-stackexchange,
-  .column.is--active .card.is-social span.icon i.fa-stackexchange {
+  .column.is--active .card.is-social span.icon i.mdi-stackoverflow,
+  .column.is--active .card.is-social span.icon i.fa-stackoverflow {
     color: #f48024;
   }
 
