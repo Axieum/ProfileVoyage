@@ -76,7 +76,7 @@ module.exports = __webpack_require__(44);
 /***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
-window.ScrollReveal = __webpack_require__(571);
+window.ScrollReveal = __webpack_require__(45);
 
 window.onload = function () {
     var cards = document.getElementsByClassName('card');
@@ -152,7 +152,7 @@ window.onload = function () {
 
 /***/ }),
 
-/***/ 571:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/////    /////    /////    /////
