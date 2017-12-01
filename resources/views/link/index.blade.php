@@ -9,6 +9,33 @@
 
 @section('content')
     <div id="wrapper" class="columns is-multiline">
+        @if (sizeof($socials) >= 5)
+        <div class="column is-6 is-offset-3">
+            <form action="{{ route('link.request') }}" class="has-text-centered" method="post">
+                {{ csrf_field() }}
+                <p class="is-size-5 has-text-weight-light">Link a new <b class="has-text-weight-normal">social media</b> account</p>
+                <div class="field has-addons has-addons-centered m-t-5">
+                    <div class="control has-icons-left">
+                        <span class="select">
+                            <select name="platform">
+                                <option selected disabled>Choose a Platform</option>
+                                @foreach ($platforms as $platform)
+                                    <option value="{{ $platform->name }}" {{ $platform->name == old('name') ? 'selected' : '' }}>{{ $platform->display_name }}</option>
+                                @endforeach
+                            </select>
+                        </span>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-external-link-square"></i>
+                        </span>
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Link</button>
+                    </div>
+                </div>
+            </form>
+            <hr class="m-b-15">
+        </div>
+        @endif
         @foreach ($socials as $social)
             <div class="column is-6 is-offset-3">
                 <div class="card is-horizontal is-rounded">
