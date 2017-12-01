@@ -36,6 +36,9 @@
     <p class="profile-divider"></p>
     <div id="profile-links" class="profile-links">
         <div class="columns is-mobile is-multiline has-content-hcentered">
+            @if (sizeof($profile->socials) < 1 && !Auth::guest() && $profile->user_id == Auth::user()->id)
+                <p class="is-size-5-desktop is-size-6-touch white-text has-text-weight-light">You haven't linked any social accounts yet. <a href="{{ route('profile.links', $profile->link) }}" class="has-text-weight-normal white-text">Click here to do just that!</a></p>
+            @endif
             @foreach ($profile->socials()->select('*', 'socials.id as id')->join('social_platforms', 'social_platforms.id', '=', 'socials.platform_id')->orderBy('social_platforms.display_name')->get() as $social)
                 <div class="column social-wrapper is-4-desktop is-6-tablet is-12-mobile">
                     <a href="{{ $social->url }}">
