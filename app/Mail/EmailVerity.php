@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use DB;
 
-class EmailVerity extends Mailable
+class EmailVerity extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
