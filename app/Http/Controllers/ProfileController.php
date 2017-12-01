@@ -44,6 +44,13 @@ class ProfileController extends Controller
      */
     public function create()
     {
+        // Check if they've got too many profiles
+        if (Auth::user()->profiles->count() >= 3)
+        {
+            LaraFlash::warning('Unfortunately, you\'ve exceeded the maximum number of profiles!');
+            LaraFlash::info('Delete an unwanted profile in place of a new one.');
+            return redirect(route('profile.index'));
+        }
         return view('profile.create');
     }
 
@@ -55,6 +62,14 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+        // Check if they've got too many profiles
+        if (Auth::user()->profiles->count() >= 3)
+        {
+            LaraFlash::warning('Unfortunately, you\'ve exceeded the maximum number of profiles!');
+            LaraFlash::info('Delete an unwanted profile in place of a new one.');
+            return redirect(route('profile.index'));
+        }
+
         $this->validateWith([
             'name' => ['required', 'string', 'min:1', 'max:16', 'alpha_dash', Rule::unique('profiles')->where(function ($query) {
                 return $query->where('user_id', Auth::user()->id);
