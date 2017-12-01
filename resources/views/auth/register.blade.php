@@ -2,6 +2,10 @@
 
 @section('title', 'Register')
 
+@section('styles')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+@endsection
+
 @section('content')
     <div class="columns is-marginless">
         <div class="column is-6-desktop is-offset-3-desktop is-8-tablet is-offset-2-tablet is-12-mobile">
@@ -58,6 +62,14 @@
                             <p class="help is-danger" :show="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</p>
                         </div>
 
+                        <div class="field is-horizontal m-t-15">
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="g-recaptcha has-content-hcentered" data-sitekey="{{ env('RECAPTCHA_KEY') }}"></div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="field is-horizontal m-t-10">
                             <div class="field-body">
                                 <div class="field">
@@ -94,15 +106,12 @@
 
 @section('scripts')
     <script>
-        const today = new Date();
         var app = new Vue({
             el: '#auth',
             data: {
                 emailLoading: false,
                 emailAvailable: true,
-                emailValue: "{{ old('email') }}",
-                minDate: new Date(today.getFullYear() - 128, today.getMonth(), today.getDate()),
-                maxDate: new Date(today.getFullYear() - 13, today.getMonth(), today.getDate())
+                emailValue: "{{ old('email') }}"
             },
             watch: {
                 emailValue: function() {

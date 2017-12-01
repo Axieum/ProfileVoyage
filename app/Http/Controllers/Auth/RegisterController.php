@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
+use App\Rules\ReCAPTCHA;
+use GuzzleHttp\Client as Guzzle;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Session;
+use LaraFlash;
 
 class RegisterController extends Controller
 {
@@ -56,7 +59,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed'
+            'password' => 'required|string|min:6|confirmed',
+            'g-recaptcha-response' => ['required', new Recaptcha]
         ]);
     }
 

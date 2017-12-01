@@ -120,7 +120,8 @@ return [
         'name' => 'profile identifier',
         'dob_day' => 'birth day',
         'dob_month' => 'birth month',
-        'dob_year' => 'birth year'
+        'dob_year' => 'birth year',
+        'g-recaptcha-response' => 'robot validation'
     ],
 
 ];

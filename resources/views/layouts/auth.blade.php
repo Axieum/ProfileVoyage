@@ -11,6 +11,7 @@
         <title>Profile Voyage | @yield('title')</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @yield('styles')
     </head>
     <body special>
         <nav class="navbar has-transparentbackground is-fixed is-nonfixed-touch" role="navigation" aria-label="main navigation">
