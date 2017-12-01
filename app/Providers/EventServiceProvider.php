@@ -24,7 +24,32 @@ class EventServiceProvider extends ServiceProvider
         ],
         'SocialiteProviders\Manager\SocialiteWasCalled' => [
             'SocialiteProviders\Twitter\TwitterExtendSocialite@handle',
-            'SocialiteProviders\YouTube\YouTubeExtendSocialite@handle'
+            'SocialiteProviders\YouTube\YouTubeExtendSocialite@handle',
+            'SocialiteProviders\Battlenet\BattlenetExtendSocialite@handle',
+            'SocialiteProviders\Vimeo\VimeoExtendSocialite@handle',
+            'SocialiteProviders\Discord\DiscordExtendSocialite@handle',
+            'SocialiteProviders\Reddit\RedditExtendSocialite@handle',
+            'SocialiteProviders\Google\GoogleExtendSocialite@handle',
+            'SocialiteProviders\Instagram\InstagramExtendSocialite@handle',
+            'SocialiteProviders\Imgur\ImgurExtendSocialite@handle',
+            'SocialiteProviders\LinkedIn\LinkedInExtendSocialite@handle',
+            'SocialiteProviders\Live\LiveExtendSocialite@handle',
+            'SocialiteProviders\Steam\SteamExtendSocialite@handle',
+            'SocialiteProviders\Twitch\TwitchExtendSocialite@handle',
+            'SocialiteProviders\Dribbble\DribbbleExtendSocialite@handle',
+            'SocialiteProviders\Deviantart\DeviantartExtendSocialite@handle',
+            'SocialiteProviders\Tumblr\TumblrExtendSocialite@handle',
+            'SocialiteProviders\Flickr\FlickrExtendSocialite@handle',
+            'SocialiteProviders\Medium\MediumExtendSocialite@handle',
+            'SocialiteProviders\Mixer\MixerExtendSocialite@handle',
+            'SocialiteProviders\Unsplash\UnsplashExtendSocialite@handle',
+            'SocialiteProviders\Etsy\EtsyExtendSocialite@handle',
+            'SocialiteProviders\Dailymotion\DailymotionExtendSocialite@handle',
+            'SocialiteProviders\Patreon\PatreonExtendSocialite@handle',
+            'SocialiteProviders\SoundCloud\SoundCloudExtendSocialite@handle',
+            'SocialiteProviders\Spotify\SpotifyExtendSocialite@handle',
+            'SocialiteProviders\StackExchange\StackExchangeExtendSocialite@handle',
+            'SocialiteProviders\FiveHundredPixel\FiveHundredPixelExtendSocialite@handle'
         ]
     ];
 

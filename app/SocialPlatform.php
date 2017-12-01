@@ -30,8 +30,33 @@ class SocialPlatform extends Model
     {
         $translations = array(
             'youtube' => 'youtube-play',
-            'snapchat' => 'snapchat-ghost',
-            'facebook' => 'facebook-square'
+            'snapchat' => 'snapchat',
+            'facebook' => 'facebook-box',
+            'battlenet' => 'gamepad-variant',
+            'vimeo' => 'vimeo',
+            'discord' => 'discord',
+            'reddit' => 'reddit',
+            'google' => 'google-plus',
+            'instagram' => 'instagram',
+            'imgur' => 'image-filter-center-focus',
+            'linkedin' => 'linkedin-box',
+            'live' => 'xbox',
+            'steam' => 'steam',
+            'twitch' => 'twitch',
+            'dribbble' => 'dribbble-box',
+            'deviantart' => 'deviantart',
+            'tumblr' => 'tumblr',
+            'flickr' => 'checkbox-multiple-blank-circle',
+            'medium' => 'medium',
+            'mixer' => 'mixer',
+            'unsplash' => 'camera',
+            'etsy' => 'etsy',
+            'dailymotion' => 'weather-sunny',
+            'patreon' => 'wallet',
+            'soundcloud' => 'soundcloud',
+            'spotify' => 'spotify',
+            'stackexchange' => 'stackoverflow',
+            '500px' => 'image'
         );
         return isset($translations[$this->name]) ? $translations[$this->name] : $this->name;
     }

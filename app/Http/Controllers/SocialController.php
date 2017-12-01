@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Social;
 use App\SocialPlatform;
 use Auth;
+use GuzzleHttp\Client as Guzzle;
 use Illuminate\Http\Request;
 use LaraFlash;
 use Socialite;
@@ -100,15 +101,121 @@ class SocialController extends Controller
         switch ($platformObject->name)
         {
             case 'twitter':
-                $socialValue = '@' . $entity->accessTokenResponseBody['screen_name'];
-                $socialUrl = 'https://twitter.com/' . $entity->accessTokenResponseBody['screen_name'];
+                $socialValue = '@' . $entity->nickname;
+                $socialUrl = 'https://twitter.com/' . $entity->nickname;
                 break;
             case 'youtube':
                 $socialValue = $entity->user['snippet']['title'];
                 $socialUrl = 'https://youtube.com/channel/' . $entity->user['id'];
                 break;
+            case 'battlenet':
+                $socialValue = $entity->accessTokenResponseBody['battletag'];
+                $socialUrl = 'https://battle.net';
+                break;
+            case 'vimeo':
+                $socialValue = $entity->accessTokenResponseBody['user']['name'];
+                $socialUrl = $entity->accessTokenResponseBody['user']['link'];
+                break;
+            case 'discord':
+                $socialValue = $entity->nickname;
+                $socialUrl = 'https://discordapp.com';
+                break;
+            case 'reddit':
+                $socialValue = 'u/' . $entity->nickname;
+                $socialUrl = 'https://reddit.com/user/' . $entity->nickname;
+                break;
+            case 'google':
+                $socialValue = $entity->user['displayName'];
+                $socialUrl = 'https://' . $entity->user['url'];
+                break;
+            case 'instagram':
+                $socialValue = null;
+                $socialUrl = '';
+                break;
+            case 'imgur':
+                $socialValue = $entity->accessTokenResponseBody['account_username'];
+                $socialUrl = 'https://imgur.com/user/' . $entity->accessTokenResponseBody['account_username'];
+                break;
+            case 'linkedin':
+                $socialValue = $entity->name;
+                $socialUrl = $entity->user['publicProfileUrl'];
+                break;
+            case 'live':
+                $socialValue = null;
+                $socialUrl = '';
+                break;
+            case 'steam':
+                $socialValue = $entity->nickname;
+                $socialUrl = $entity->user['profileurl'];
+                break;
+            case 'twitch':
+                $socialValue = $entity->user['display_name'];
+                $socialUrl = 'https://twitch.tv/' . $entity->user['name'];
+                break;
+            case 'dribbble':
+                $socialValue = $entity->user['name'];
+                $socialUrl = $entity->user['html_url'];
+                break;
+            case 'deviantart':
+                $socialValue = $entity->user['username'];
+                $socialUrl = 'https://' . $entity->user['username'] . '.deviantart.com';
+                break;
+            case 'tumblr':
+                $socialValue = $entity->nickname;
+                $socialUrl = 'https://www.tumblr.com/search/' . $entity->nickname;
+                break;
+            case 'flickr':
+                $socialValue = $entity->nickname;
+                $socialUrl = $entity->user['profileurl']['_content'];
+                break;
+            case 'medium':
+                $socialValue = $entity->name;
+                $socialUrl = $entity->user['data']['url'];
+                break;
+            case 'mixer':
+                $socialValue = $entity->username;
+                $socialUrl = 'https://mixer.com/' . $entity->username;
+                break;
+            case 'unsplash':
+                $socialValue = $entity->user['username'];
+                $socialUrl = $entity->profileUrl;
+                break;
+            case 'etsy':
+                $socialValue = $entity->nickname;
+                $socialUrl = 'https://etsy.com/people/' . $entity->nickname;
+                break;
+            case 'dailymotion':
+                $socialValue = $entity->user['screenname'];
+                $socialUrl = 'https://dailymotion.com/' . $entity->user['username'];
+                break;
+            case 'patreon':
+                $socialValue = $entity->name;
+                $socialUrl = $entity->user['data']['attributes']['url'];
+                break;
+            // case 'soundcloud':
+            //     $socialValue = null;
+            //     $socialUrl = '';
+            //     break;
+            case 'spotify':
+                $socialValue = $entity->user['id'];
+                $socialUrl = $entity->user['external_urls']['spotify'];
+                break;
+            case 'stackexchange':
+                if (!isset($entity->user['items'][0]))
+                {
+                    LaraFlash::warning('A Stack Overflow account was not found! Try again later.');
+                    return redirect(route('link.index'));
+                }
+                $socialValue = $entity->user['items'][0]['display_name'];
+                $socialUrl = $entity->user['items'][0]['link'];
+                break;
+            case '500px':
+                $socialValue = $entity->name;
+                $socialUrl = 'https://500px.com/' . $entity->nickname;
+                break;
             default:
-                $socialValue = isset($entity->accessTokenResponseBody['user_id']) ? $entity->accessTokenResponseBody['user_id'] : null;
+                $socialValue = isset($entity->name) ? $entity->name : null;
+                $socialUrl = url(route('index'));
                 break;
         }
         $social->value = $socialValue;
